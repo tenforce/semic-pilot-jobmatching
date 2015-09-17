@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - List not annotated documents</title>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<h2>List not annotated documents</h2>
+<ul>
+  <li th:each="uri : ${uris}">
+    <a th:href="@{/document(uri=${uri})}" th:text="${uri}">Document uri</a>
+  </li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - View CV info</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/overlay.css}" href="../resources/overlay.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+<div id="ajaxOverlay" class="overlay">
+  <div class="overlayBox" id="ajaxMessageBox"></div>
+</div>
+<div style="display: none;" id="ajaxDone">
+  <div id="ajaxDoneMessage"></div>
+  <button id="ajaxCloseButton" onclick="closeOverlay();">OK</button>
+</div>
+
+<div class="form-group">
+  <form action="" method="get" th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+    <input type="hidden" name="uri" th:value="${cv.uri}"/>
+    <label for="languageSelector">Language: </label>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+</div>
+
+<h2>CV</h2>
+
+<table width="70%" class="table table-small table-striped">
+  <tr>
+    <td align="left" valign="top">URL</td>
+    <td th:text="${cv.uri}">CV uri</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Label</td>
+    <td th:text="${cv.description}">Description comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">ESCO Skills v0</td>
+    <td>
+      <ul>
+        <li th:text="${skill.label}" th:each="skill : ${cv.skills}">Skill...</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">ESCO Skills v1</td>
+    <td>
+      <ul id="directV1SkillsList">
+        <li th:if="${#lists.isEmpty(cv.skillsV1)}" id="directV1SkillsNone">No direct v1 ESCO skills found for this CV</li>
+        <li th:text="${skill.label}" th:each="skill : ${cv.skillsV1}">Skill...</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">ESCO v0 Occupations</td>
+    <td>
+      <ul>
+        <li th:if="${#lists.isEmpty(cv.occupations)}">No direct v0 ESCO occupations found for this CV</li>
+        <li th:each="occupation : ${cv.occupations}">
+          <span th:text="${occupation.label}">occupation...</span>
+          <ul>
+            <li th:if="${#lists.isEmpty(occupation.skills)}">No skills found for this occupation</li>
+            <li th:each="skill : ${occupation.skills}" th:text="${skill.label}">skill</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">ESCO v1 Occupations</td>
+    <td>
+      <ul>
+        <li th:if="${#lists.isEmpty(cv.occupationsV1)}">No direct v1 ESCO occupations found for this CV</li>
+        <li th:each="occupation : ${cv.occupationsV1}">
+          <span th:text="${occupation.label}">occupation v1...</span>
+          <ul>
+            <li th:if="${#lists.isEmpty(occupation.skills)}">No skills found for this occupation</li>
+            <li th:each="skill : ${occupation.skills}">
+              <span th:text="${skill.label}">skill</span>
+              <span class="btn btn-xs btn-link" th:onclick="|addSkill('${skill.uri}', '${skill.label}');|">Add skill</span>
+            </li>
+          </ul>
+
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+<div class="col-sm-6  col-sm-offset-3 form">
+  <form id="searchSkillForm">
+    <div class="form-group">
+      <label for="selectSkillText">Search for skill: </label>
+      <input class="form-control" type="text" id="selectSkillText"/>
+    </div>
+    <div class="form-group">
+      <div id="resultBox"/>
+    </div>
+  </form>
+</div>
+
+<div class="col-sm-6">
+  <button th:if="${cv.hasDocument}" class="btn btn-primary" th:attr="onclick=|document.location = '@{/document(uri=${cv.uri})}';|">Annotate</button>
+</div>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  //@formatter:off
+  var serviceApiUrl = [[${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).serviceApiUrl}]];
+  var authorizationHeaderValue = [[${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).authorizationHeaderValue}]];
+  var addSkillAjaxUrl = [[@{/editCV/addSkillAjax}]];
+  var cvUri = [[${cv.uri}]];
+  //@formatter:on
+  var language = 'en';
+
+  $(function () {
+    $("#searchSkillForm").submit(function (e) {
+      e.preventDefault();
+      doSearch();
+    });
+  });
+
+  var searchRequest;
+  function doSearch() {
+    if (searchRequest && searchRequest.readyState != 4) searchRequest.abort();
+
+    var resultBox = $("#resultBox");
+    var searchString = $("#selectSkillText").val();
+    resultBox.html("searching...");
+    searchRequest = $.ajax(
+            {
+              url: serviceApiUrl + "search;type=http%3A%2F%2Fdata.europa.eu%2Fesco%2Fmodel%23Skill;language=" + language + ";view=list;size=50;text=" + searchString,
+              type: 'get',
+              dataType: 'json',
+              beforeSend: function (xhr) {
+                if (authorizationHeaderValue) xhr.setRequestHeader("Authorization", authorizationHeaderValue);
+              },
+              success: function (data) {
+                console.log(data);
+                searchSuccess(data, resultBox);
+              },
+              error: function (data) {
+                resultBox.html("Search error: " + data);
+              }
+            });
+  }
+
+  function searchSuccess(data, resultField) {
+    var value = "";
+    for (var i = 0; i < data.concepts.length; i++) {
+      var thisUri = data.concepts[i].concept.uri;
+
+      var index = thisUri.indexOf(';');
+      var lastPart = index > 0 ? thisUri.substring(0, index) : thisUri;
+      lastPart = lastPart.substring(lastPart.lastIndexOf('/') + 1);
+      if (+lastPart === +lastPart) continue;
+
+      var prefLabel = data.concepts[i].concept.prefLabel[language];
+      if (!prefLabel) prefLabel = data.concepts[i].concept.prefLabel[0];
+
+      value += "<span>" + prefLabel + "</span><span class=\"btn btn-xs btn-link\"  onclick=\"addSkill('" + thisUri + "', '" + prefLabel + "');\">Add skill</span><br/>";
+    }
+    if (value == "") value = "<span>No results found</span>";
+    resultField.html(value);
+  }
+  function closeOverlay() {
+    $("#ajaxOverlay").hide();
+  }
+  function addSkill(skillUri, label) {
+    $("#ajaxMessageBox").html("Adding skill...");
+    $("#ajaxOverlay").show();
+
+    var data = {};
+    data['cvUri'] = cvUri;
+    data['skillUri'] = skillUri;
+
+    $.ajax(
+            {
+              url: addSkillAjaxUrl,
+              type: 'post',
+              data: data,
+
+              success: function () {
+                closeOverlay();
+                $("#directV1SkillsNone").hide();
+                $("#directV1SkillsList").append("<li><p>" + label + "</p></li>");
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                $("#ajaxDoneMessage").html("Upload data failed: " + errorThrown);
+                $("#ajaxMessageBox").html($("#ajaxDone").html());
+              }
+            });
+
+  }
+  /*]]>*/
+</script>
+
+</body>
+</html>

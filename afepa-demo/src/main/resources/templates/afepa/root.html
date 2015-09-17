@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Afepa - ESCO service api demo</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/jqueryui/jquery-ui-1.10.4.custom.min.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/bootstrap/js/bootstrap.js}"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/jqueryui/jquery-ui-1.10.4.custom.min.css}" media="all" rel="stylesheet" type="text/css"/>
+  <style>
+    .ui-datepicker {
+      z-index: 9999 !important;
+    }
+
+    .upload-drop-zone {
+      height: 35px;
+      border-width: 2px;
+      margin-bottom: 20px;
+      color: #ccc;
+      border-style: dashed;
+      border-color: #ccc;
+      line-height: 35px;
+      text-align: center
+    }
+
+    .upload-drop-zone.drop {
+      color: #222;
+      border-color: #222;
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Demo
+    <small>basic functional support to capture a JSP (Job Seeker Profile)</small>
+  </h1>
+</div>
+
+<div class="col-md-5">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">JSP name</h3>
+    </div>
+    <div class="panel-body">
+      <input type="text" id="jspName" class="form-control" placeholder="Job Seeker Profile name"/>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Job experience</h3>
+    </div>
+    <div class="panel-body">
+      <form onsubmit="addConceptStringFromField($('#occupationSearchTerm'), 'selectedOccupations');return false;">
+        <input type="text" name="occupationSearchTerm" id="occupationSearchTerm" class="form-control" placeholder="Search for an occupation"/>
+      </form>
+      <br/>
+
+      <div id="selectedOccupations" class="list-group">
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Skills</h3>
+    </div>
+    <div class="panel-body">
+      <form onsubmit="addConceptStringFromField($('#skillSearchTerm'), 'selectedSkills');return false;">
+        <input type="text" name="skillSearchTerm" id="skillSearchTerm" class="form-control" placeholder="Search for a skill"/>
+      </form>
+      <br/>
+
+      <div id="selectedSkills" class="list-group">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-5">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Control</h3>
+    </div>
+    <div class="panel-body">
+      <a href="" id="saveLink" download="jsp.json" style="display: none;"></a>
+      <button id="saveButton" class="btn btn-primary">Save to JSON</button>
+      <span style="margin-left: 5px; margin-right: 5px;" class="upload-drop-zone" id="drop-zone">
+        Drop json file to load here...
+      </span>
+      <button class="btn btn-primary" onclick="clearAll()">Clear all</button>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">ESCO suggested skills for an occupation</h3>
+    </div>
+    <div class="panel-body" id="suggestedSkills">Select an occupation...</div>
+  </div>
+</div>
+
+<footer class="col-md-10"><em>Note: This application uses new v0.1 data which could result in 404 error when viewing this data on the ESCO portal which is still v0 data.</em></footer>
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+
+  //@formatter:off
+  var serviceApiUrl = [[${serviceApiUrl}]];
+  var authorizationHeaderValue = [[${authorizationHeaderValue}]];
+  var imageLoadUrl = [[@{/resources/images/loading.gif}]];
+  //@formatter:on
+  var selectedSkills = [];
+  var selectedOccupations = [];
+  var conceptCounter = 0;
+  var lastSelectedOccupation = null;
+
+  function hideAutocomplete(e) {
+    if (e.which === 13) $(".ui-menu-item").hide();
+  }
+
+  $(function () {
+    $("footer").effect("highlight", {color: "red"}, 3000);
+    $("#skillSearchTerm").autocomplete({minLength: 2, source: sourceSkill, select: selectSkill, change: clearOnChange}).keyup(hideAutocomplete);
+    $("#occupationSearchTerm").autocomplete({minLength: 2, source: sourceOccupation, select: selectOccupation, change: clearOnChange}).keyup(hideAutocomplete);
+    $("#saveButton").click(function () {
+      var saveLink = document.getElementById("saveLink");
+      saveLink.href = "data:application/json;charset=utf-8," + encodeURIComponent(JSON.stringify(createData()));
+      saveLink.click();
+    });
+
+    var dropZone = document.getElementById('drop-zone');
+
+    dropZone.ondrop = function (e) {
+      e.preventDefault();
+      this.className = 'upload-drop-zone';
+
+      startUpload(e.dataTransfer.files)
+    };
+
+    dropZone.ondragover = function () {
+      this.className = 'upload-drop-zone drop';
+      return false;
+    };
+
+    dropZone.ondragleave = function () {
+      this.className = 'upload-drop-zone';
+      return false;
+    };
+
+    var reader = new FileReader();
+    reader.onload = function (e) {
+      var data = JSON.parse(reader.result);
+      clearAll();
+      $('#jspName').val(data.jspName);
+      var i, conceptFieldId;
+      for (i = 0; i < data.jobExperiences.length; i++) {
+
+        if (data.jobExperiences[i].uri) {
+          conceptFieldId = addConcept(data.jobExperiences[i].label, data.jobExperiences[i].uri, selectedOccupations, "selectedOccupations", false, null);
+        }
+        else {
+          conceptFieldId = addConceptString(data.jobExperiences[i].label, "selectedOccupations");
+        }
+        $('#from_' + conceptFieldId).val(data.jobExperiences[i].from);
+        $('#to_' + conceptFieldId).val(data.jobExperiences[i].to);
+        $('#company_' + conceptFieldId).val(data.jobExperiences[i].company);
+        $('#location_' + conceptFieldId).val(data.jobExperiences[i].location);
+      }
+      for (i = 0; i < data.skills.length; i++) {
+        if (data.skills[i].uri) {
+          addConcept(data.skills[i].label, data.skills[i].uri, selectedSkills, "selectedSkills", false, null);
+        }
+        else {
+          addConceptString(data.skills[i].label, "selectedSkills");
+        }
+      }
+    };
+
+    var startUpload = function (files) {
+      if (files.length != 1) {
+        alert("Please drop exactly one file");
+        return;
+      }
+      reader.readAsText(files[0], "utf-8");
+    };
+
+  });
+
+  function clearAll() {
+    conceptCounter = 0;
+    selectedSkills = [];
+    selectedOccupations = [];
+
+    $("#jspName").val("");
+    $("#selectedOccupations").html("");
+    $("#selectedSkills").html("");
+    $("#suggestedSkills").html("Select an occupation...");
+  }
+
+  function createData() {
+    var jobExperiences = [];
+    $("#selectedOccupations").children("a").each(function (i) {
+      var jobExperienceRow = {};
+      var conceptFieldId = $(this).attr("esco-id");
+      jobExperienceRow["from"] = $('#from_' + conceptFieldId).val();
+      jobExperienceRow["to"] = $('#to_' + conceptFieldId).val();
+      jobExperienceRow["company"] = $('#company_' + conceptFieldId).val();
+      jobExperienceRow["location"] = $('#location_' + conceptFieldId).val();
+      jobExperienceRow["label"] = $(this).attr("esco-label");
+
+      var uri = $(this).attr("esco-uri");
+      if (uri) jobExperienceRow["uri"] = uri;
+
+      jobExperiences.push(jobExperienceRow);
+    });
+
+    var skills = [];
+    $("#selectedSkills").children("a").each(function (i) {
+      var skillRow = {};
+      skillRow["uri"] = $(this).attr("esco-uri");
+      skillRow["label"] = $(this).attr("esco-label");
+      skills.push(skillRow);
+    });
+
+    var data = {};
+    data["jspName"] = $('#jspName').val();
+    data["jobExperiences"] = jobExperiences;
+    data["skills"] = skills;
+
+    return data;
+  }
+
+  function clearOnChange() {
+    $(this).val("");
+  }
+
+  function responseFunction(data, response) {
+    var keywords = data["codedKeyword"];
+    var result = [];
+    if (keywords) {
+      for (var i = 0; i < keywords.length; i++) {
+        result.push({label: keywords[i].label, uri: keywords[i].uri});
+      }
+    }
+    response(result);
+  }
+
+  function unselectOccupation() {
+    $("#suggestedSkills").html("Select an occupation...");
+    $("#selectedOccupations").children("a").each(function (i) {
+      $(this).removeClass("active");
+    });
+  }
+
+  function sourceOccupation(request, response) {
+    source("http%3A%2F%2Fdata.europa.eu%2Fesco%2FautocompleteCollection.occ", request, response);
+  }
+  function sourceSkill(request, response) {
+    source("http%3A%2F%2Fdata.europa.eu%2Fesco%2FautocompleteCollection.sc", request, response);
+  }
+  function source(collectionUri, request, response) {
+    var url = serviceApiUrl + "searchTypeAhead;collection=" + collectionUri + ";language=en;text=" + encodeURIComponent(request.term);
+
+    $.ajaxSetup(null != authorizationHeaderValue ? {
+      headers: {
+        'Authorization': authorizationHeaderValue
+      }
+    } : {});
+
+    $.getJSON(url, null, function (data) {
+      responseFunction(data, response);
+    });
+  }
+
+  function selectSkill(event, ui) {
+    addConcept(ui.item.label, ui.item.uri, selectedSkills, "selectedSkills", false);
+    $("#skillSearchTerm").val("");
+    return false;
+  }
+
+  function selectOccupation(event, ui) {
+    addConcept(ui.item.label, ui.item.uri, selectedOccupations, "selectedOccupations", false);
+    $("#occupationSearchTerm").val("");
+    return false;
+  }
+
+  function stringOccupationClicked(clickedElement) {
+    lastSelectedOccupation = clickedElement[0];
+    $("#suggestedSkills").html("Non-ESCO occupation selected, cannot show suggested skills...");
+    $("#selectedOccupations").children("a").each(function (i) {
+      if ($(this)[0] != clickedElement[0]) $(this).removeClass("active");
+    });
+    clickedElement.addClass("active");
+  }
+
+  var suggestedSkillsLoader;
+  function occupationClicked(clickedElement, uri) {
+    lastSelectedOccupation = clickedElement[0];
+    if (suggestedSkillsLoader) {
+      suggestedSkillsLoader.abort();
+      suggestedSkillsLoader = null;
+    }
+    clickedElement.popover("hide");
+    clickedElement.addClass("active");
+    $("#selectedOccupations").children("a").each(function (i) {
+      if ($(this)[0] != clickedElement[0]) $(this).removeClass("active");
+    });
+
+    $("#suggestedSkills").html("<img src=\"" + imageLoadUrl + "\"/> Loading...");
+
+    var data = {
+      "language": "en",
+      "view": "detail",
+      "type": ["http://data.europa.eu/esco/model#Skill"],
+      "related": [uri]
+    };
+    suggestedSkillsLoader = $.ajax(
+            {
+              url: serviceApiUrl + "relatedConcepts",
+              type: "POST",
+              data: JSON.stringify(data),
+              dataType: "json",
+              contentType: "application/json",
+              beforeSend: function (xhr) {
+                if (authorizationHeaderValue) xhr.setRequestHeader("Authorization", authorizationHeaderValue);
+              },
+              success: function (data) {
+                $("#suggestedSkills").html("");
+                buildSuggestedSkills(uri, data.concepts);
+              }
+            }
+    );
+  }
+
+  function buildSuggestedSkills(occupationUri, concepts) {
+    var toAddConcepts = [];
+    toAddConcepts["Essential"] = [];
+    toAddConcepts["Optional"] = [];
+    toAddConcepts["Unknown/Undefined"] = [];
+
+    for (var i = 0; i < concepts.length; i++) {
+      var relationshipType = findRelationshipType(occupationUri, concepts[i].concept.hasRelationship);
+      if (relationshipType == "Essential") toAddConcepts["Essential"].push(concepts[i]);
+      else if (relationshipType == "Optional") toAddConcepts["Optional"].push(concepts[i]);
+      else toAddConcepts["Unknown/Undefined"].push(concepts[i]);
+    }
+
+    var innerHtml = "<div class=\"panel panel-default\">" +
+                    "  <div class=\"panel-heading\">" +
+                    "    <h3 class=\"panel-title\">Essential skills</h3>" +
+                    "  </div>" +
+                    "  <div class=\"panel-body\" id=\"suggestedEssentialSkills\"></div>" +
+                    "</div>" +
+                    "<div class=\"panel panel-default\">" +
+                    "  <div class=\"panel-heading\">" +
+                    "    <h3 class=\"panel-title\">Optional skills</h3>" +
+                    "  </div>" +
+                    "  <div class=\"panel-body\" id=\"suggestedOptionalSkills\"></div>" +
+                    "</div>" +
+                    "<div class=\"panel panel-default\">" +
+                    "  <div class=\"panel-heading\">" +
+                    "    <h3 class=\"panel-title\">Skills with no or undefined relation</h3>" +
+                    "  </div>" +
+                    "  <div class=\"panel-body\" id=\"suggestedOtherSkills\"></div>" +
+                    "</div>";
+    $("#suggestedSkills").html(innerHtml);
+
+    addConceptSet(toAddConcepts["Essential"], "suggestedEssentialSkills");
+    addConceptSet(toAddConcepts["Optional"], "suggestedOptionalSkills");
+    addConceptSet(toAddConcepts["Unknown/Undefined"], "suggestedOtherSkills");
+  }
+
+  function addConceptSet(conceptSet, fieldId) {
+    if (conceptSet.length == 0) {
+      $("#" + fieldId).html("No skills with this relationType found.");
+    }
+    for (var i = 0; i < conceptSet.length; i++) {
+      addConcept(getFirstElement(conceptSet[i].concept.prefLabel), conceptSet[i].concept.uri, [], fieldId, true, conceptSet[i].concept);
+    }
+  }
+
+  function findRelationshipType(uri, relationships) {
+    for (var i = 0; i < relationships.length; i++) {
+      var relationship = relationships[i];
+      if (relationship.isRelationshipFor.uri != uri && relationship.refersConcept.uri != uri) continue;
+      var type = relationship.hasRelationshipType;
+      if (!type) continue;
+
+      if (type.uri == "http://data.europa.eu/esco/RelationshipType#iC.essentialSkill") return "Essential";
+      if (type.uri == "http://data.europa.eu/esco/RelationshipType#iC.optionalSkill") return "Optional";
+      return "Unknown";
+    }
+    return "Undefined";
+  }
+
+  function addConceptStringFromField(labelField, fieldId) {
+    if (labelField.val().trim() == "") return;
+
+    var result = addConceptString(labelField.val(), fieldId);
+    labelField.val("");
+    return result;
+  }
+  function addConceptString(label, fieldId) {
+    if (fieldId == "selectedOccupations") unselectOccupation();
+
+    var conceptFieldId = "concept_" + conceptCounter++;
+    var newElement = $(document.createElement("a"))
+            .attr("esco-id", conceptFieldId)
+            .attr("esco-label", label);
+
+    var innerHtml = "<div class=\"media\">";
+    if (fieldId == "selectedOccupations") {
+      innerHtml = innerHtml +
+                  "<div class=\"form-inline\">" +
+                  "<div class=\"form-group\">" +
+                  "From: <input readonly=\"readonly\" type=\"type\" size=\"10\" class=\"form-control\" id=\"from_" + conceptFieldId + "\"> " +
+                  "To: <input readonly=\"readonly\" type=\"type\" size=\"10\" class=\"form-control\" id=\"to_" + conceptFieldId + "\"> " +
+                  "</div><br/><div class=\"form-group\">" +
+                  "For: <input type=\"type\" size=\"30\" class=\"form-control\" id=\"company_" + conceptFieldId + "\"> " +
+                  "</div><br/><div class=\"form-group\">" +
+                  "At: <input type=\"type\" size=\"30\" class=\"form-control\" id=\"location_" + conceptFieldId + "\"> " +
+                  "</div>" +
+                  "</div>" +
+                  "<div id=\"occupationLink_" + conceptFieldId + "\"><br/>";
+    }
+    innerHtml = innerHtml + "<div class=\"media-body\"><h4>" + label + "</h4></div>";
+    innerHtml = innerHtml + "<div class=\"media-object media-right\"><button class=\"btn btn-danger\" id=\"remove_" + conceptFieldId + "\">Remove</button></div>";
+    innerHtml = innerHtml + "</div>";
+    if (fieldId == "selectedOccupations") innerHtml = innerHtml + "</div>";
+
+    newElement
+            .attr("id", conceptFieldId)
+            .addClass("list-group-item")
+            .html(innerHtml)
+            .appendTo($("#" + fieldId));
+
+    if (fieldId == "selectedOccupations") {
+      $("#occupationLink_" + conceptFieldId).click(function (event) {
+        event.preventDefault();
+        stringOccupationClicked(newElement);
+      });
+
+      var datepickerConfig = {
+        dateFormat: "yy-mm-dd",
+        onClose: function (newValue) {
+          $(this).datepicker('setDate', newValue);
+        }
+      };
+
+      $("#from_" + conceptFieldId).datepicker(datepickerConfig);
+      $("#to_" + conceptFieldId).datepicker(datepickerConfig);
+    }
+
+    $("#remove_" + conceptFieldId).click(function (e) {
+      e.preventDefault();
+      $("#" + conceptFieldId).remove();
+      if(lastSelectedOccupation == $(newElement)[0]) unselectOccupation();
+    });
+
+    return conceptFieldId;
+  }
+
+  function addConcept(label, uri, selectedConcepts, fieldId, leftPopup, conceptData) {
+    if (selectedConcepts.indexOf(uri) >= 0) return;
+    selectedConcepts.push(uri);
+
+    if (fieldId == "selectedOccupations") unselectOccupation();
+
+    var conceptFieldId = "concept_" + conceptCounter++;
+
+    var newElement = $(document.createElement("a"))
+            .attr("esco-id", conceptFieldId)
+            .attr("esco-uri", uri)
+            .attr("esco-label", label);
+
+    var innerHtml = "<div class=\"media\">";
+    if (fieldId == "selectedOccupations") {
+      innerHtml = innerHtml +
+                  "<div class=\"form-inline\">" +
+                  "<div class=\"form-group\">" +
+                  "From: <input readonly=\"readonly\" type=\"type\" size=\"10\" class=\"form-control\" id=\"from_" + conceptFieldId + "\"> " +
+                  "To: <input readonly=\"readonly\" type=\"type\" size=\"10\" class=\"form-control\" id=\"to_" + conceptFieldId + "\"> " +
+                  "</div><br/><div class=\"form-group\">" +
+                  "For: <input type=\"type\" size=\"30\" class=\"form-control\" id=\"company_" + conceptFieldId + "\"> " +
+                  "</div><br/><div class=\"form-group\">" +
+                  "At: <input type=\"type\" size=\"30\" class=\"form-control\" id=\"location_" + conceptFieldId + "\"> " +
+                  "</div>" +
+                  "</div>" +
+                  "<div id=\"occupationLink_" + conceptFieldId + "\"><br/>";
+    }
+    innerHtml = innerHtml + "<div class=\"media-body\"><h4 class=\"list-group-item-heading\">" + label + "</h4><p class=\"list-group-item-text\">" + uri + "</p></div> ";
+    innerHtml = innerHtml + "<div class=\"media-object media-right\">";
+    if (fieldId != "selectedOccupations" && fieldId != "selectedSkills") {
+      innerHtml = innerHtml + "<button class=\"btn btn-primary\" id=\"add_" + conceptFieldId + "\">Add</button>";
+    }
+    else {
+      innerHtml = innerHtml + "<button class=\"btn btn-danger\" id=\"remove_" + conceptFieldId + "\">Remove</button>";
+    }
+
+    innerHtml = innerHtml + "<button style=\"margin-top: 10px;\" class=\"btn btn-success\" id=\"view_" + conceptFieldId + "\">View</button>";
+    innerHtml = innerHtml + "</div></div>";
+    if (fieldId == "selectedOccupations") innerHtml = innerHtml + "</div>";
+
+    newElement
+            .attr("id", conceptFieldId)
+            .addClass("list-group-item")
+            .html(innerHtml)
+            .appendTo($("#" + fieldId));
+
+    if (fieldId == "selectedOccupations") {
+      $("#occupationLink_" + conceptFieldId).click(function (event) {
+        event.preventDefault();
+        occupationClicked(newElement, uri);
+      });
+
+      var datepickerConfig = {
+        dateFormat: "yy-mm-dd",
+        onClose: function (newValue) {
+          $(this).datepicker('setDate', newValue);
+        }
+      };
+
+      $("#from_" + conceptFieldId).datepicker(datepickerConfig);
+      $("#to_" + conceptFieldId).datepicker(datepickerConfig);
+    }
+    if (fieldId != "selectedOccupations" && fieldId != "selectedSkills") {
+      $("#add_" + conceptFieldId).click(function (event) {
+        event.preventDefault();
+        addConcept(label, uri, selectedSkills, "selectedSkills", false, conceptData);
+      });
+    }
+    else {
+      $("#remove_" + conceptFieldId).click(function (e) {
+        e.preventDefault();
+        var toRemoveField = $("#" + conceptFieldId);
+        toRemoveField.popover('destroy');
+        toRemoveField.remove();
+        selectedConcepts.splice($.inArray(uri, selectedConcepts), 1);
+        if(lastSelectedOccupation == $(newElement)[0]) unselectOccupation();
+      });
+    }
+    $("#view_" + conceptFieldId).click(function (e) {
+      e.preventDefault();
+      window.open(uri, "afepa_link");
+    });
+
+    if (conceptData) {
+      addPopover($("#" + conceptFieldId), conceptData, leftPopup);
+    }
+    else {
+      $.ajax(serviceApiUrl + "concept;language=en;view=detail;concept=" + encodeURIComponent(uri), {
+        success: function (data) {
+          addPopover($("#" + conceptFieldId), data.concept, leftPopup);
+        }
+      });
+    }
+    return conceptFieldId;
+  }
+
+  function addPopover(field, conceptData, left) {
+    var content = "<b>URI:</b> " + conceptData.uri + "<br/>" +
+                  "<b>Scope:</b> " + getFirstElement(conceptData.scopeNote) + "<br/>" +
+                  "<b>Definition:</b> " + getFirstElement(conceptData.definition) + "<br/>" +
+                  "<b>Description:</b> " + getFirstElement(conceptData.description) + "<br/>" +
+                  "";
+    var width = $("#suggestedSkills").width();
+    field.popover({
+      title: getFirstElement(conceptData.prefLabel),
+      content: content,
+      trigger: "hover",
+      html: true,
+      placement: left ? "left" : "right",
+      template: '<div class="popover" style="max-width: 1000px;width: ' + width + 'px;height: 400px;" role="tooltip"><div class="arrow"></div><h3 class="popover-title"></h3><div class="popover-content"></div></div>'
+    });
+
+  }
+
+  function unnullize(value) {
+    return value ? value : "";
+  }
+
+  function getFirstElement(obj) {
+    //noinspection LoopStatementThatDoesntLoopJS
+    for (var attr in obj) {
+      return unnullize(obj[attr]);
+    }
+    return "";
+  }
+  /*]]>*/
+</script>
+
+</body>
+</html>

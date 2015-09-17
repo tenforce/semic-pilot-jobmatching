@@ -1,0 +1,300 @@
+<rdf:RDF
+    xmlns:flow="http://ec.europa.eu/esco/flow#"
+    xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+    xmlns:itm="http://www.mondeca.com/system/itm#"
+    xmlns:pub="http://www.mondeca.com/system/publishing#"
+    xmlns:dc="http://purl.org/dc/elements/1.1/"
+    xmlns:t3="http://www.mondeca.com/system/t3#"
+    xmlns:schema="http://schema.org/"
+    xmlns:esco="http://ec.europa.eu/esco/model#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:foaf="http://xmlns.com/foaf/0.1/"
+    xmlns:oc="http://www.mondeca.com/system/ontology_creation#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:dcterms="http://purl.org/dc/terms/"
+    xmlns:xl="http://www.w3.org/2008/05/skos-xl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:group="http://www.mondeca.com/system/group#"
+    xmlns:bo="http://www.mondeca.com/system/basicontology#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+	 <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/116340">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/210388"/>
+    <dcterms:identifier>116340</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/225237"/>
+    <esco:broaderInstance rdf:resource="http://ec.europa.eu/esco/isco2008/Concept/C7514"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/131188"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/170788"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/180688"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/215338"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/121290"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/155938"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/205438"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/227738"/>
+    <esco:broaderInstance rdf:resource="http://ec.europa.eu/esco/isco2008/Concept/C8160"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/150988"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/126238"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/231782"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/190588"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/185638"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/231865"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/229728"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/146038"/>
+    <esco:broaderInstance rdf:resource="http://ec.europa.eu/esco/isco2008/Concept/C3122"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <skos:inScheme rdf:resource="http://ec.europa.eu/esco/ConceptScheme/ESCO"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/228309"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/160888"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/136138"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/229100"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/141088"/>
+    <esco:undefined rdf:resource="http://ec.europa.eu/esco/Concept/230074"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/220287"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/195538"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/200488"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Occupation"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/165838"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/175738"/>
+  </rdf:Description>
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/121290">
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <xl:literalForm xml:lang="en">Must and juice processing worker</xl:literalForm>
+  </rdf:Description>
+  
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/227738">
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/239146"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/318787"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/278945"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/324468"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/307426"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/250517"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/256198"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/301745"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/284620"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/290331"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/341506"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/261880"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/296063"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/273243"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/313107"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/352868"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/244836"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/233470"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/267561"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/335830"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/330149"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/347187"/>
+    <dcterms:identifier>227738</dcterms:identifier>
+  </rdf:Description>
+  
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/233470">
+    <xl:literalForm xml:lang="en">Mechanical repair work</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+  
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/231782">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/265881"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/282946"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/254518"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/271562"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/311427"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/300065"/>
+    <dcterms:identifier>231782</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/260200"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/351188"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/243156"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/305746"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/294375"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/322788"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/345507"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/317107"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/237471"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/339831"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/248837"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/277259"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/356869"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/288622"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/334150"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/328469"/>
+  </rdf:Description>
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/237471">
+    <xl:literalForm xml:lang="en">Machine operation (food industry)</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+  
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/235449">
+    <xl:literalForm xml:lang="en">Food industry</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/229728">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/235449"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/252496"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/315086"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/320766"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/286600"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/275229"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/298043"/>
+    <dcterms:identifier>229728</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/337809"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/309405"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/258177"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/241130"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/354847"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/263859"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/280924"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/349166"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/292321"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/326447"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/269540"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/332128"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/303724"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/246815"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/343485"/>
+  </rdf:Description>
+  
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/237554">
+    <xl:literalForm xml:lang="en">Juice factory production</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/231865">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/271645"/>
+    <dcterms:identifier>231865</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/305829"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/356952"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/283029"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/311510"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/243239"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/248920"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/351271"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/339914"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/322871"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/237554"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/328552"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/265964"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/300148"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/260283"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/254601"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/277342"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/294458"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/334233"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/345590"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/317190"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/288705"/>
+  </rdf:Description>
+  
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/234755">
+    <xl:literalForm xml:lang="en">Sampling (industrial)</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+  
+  <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/229029">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/280230"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/308711"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/342791"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/320072"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/303030"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/337115"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/268846"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/274532"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/246121"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/257483"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/314392"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/251802"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/331434"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/354153"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/285906"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/348472"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/234755"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/291622"/>
+    <dcterms:identifier>229029</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/240433"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/325753"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/263165"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/297349"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/234037">
+    <xl:literalForm xml:lang="en">Overhead crane operation</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/228309">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/251084"/>
+    <dcterms:identifier>228309</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/256765"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/336397"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/262447"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/319354"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/285187"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/234037"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/245403"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/307993"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/290902"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/296631"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/279512"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/325035"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/273812"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/330716"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/302312"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/353435"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/342073"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/313674"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/347754"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/268128"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/239714"/>
+  </rdf:Description>
+  
+   <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/234826">
+    <xl:literalForm xml:lang="en">Process monitoring</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Concept/229100">
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/348543"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/342862"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/325824"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/285977"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/320143"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/274603"/>
+    <dcterms:identifier>229100</dcterms:identifier>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/240504"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/308782"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/303101"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/251873"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/257554"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Skill"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/280301"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/354224"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/268917"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/337186"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/263236"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/331505"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/291693"/>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#MemberConcept"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/314463"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/297420"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/246192"/>
+    <xl:prefLabel rdf:resource="http://ec.europa.eu/esco/Label/234826"/>
+  </rdf:Description>
+    <rdf:Description rdf:about="http://ec.europa.eu/esco/Label/235790">
+    <xl:literalForm xml:lang="en">Fork-lift truck driving</xl:literalForm>
+    <flow:releasedWithVersion xml:lang="en">v0.1</flow:releasedWithVersion>
+    <rdf:type rdf:resource="http://ec.europa.eu/esco/model#Label"/>
+  </rdf:Description>
+</rdf:RDF>

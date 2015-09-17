@@ -1,0 +1,88 @@
+
+construct {
+   ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+   ?cv <http://purl.org/dc/terms/description> ?description .
+   ?cv <http://xmlns.com/foaf/0.1/givenName> ?givenName .
+
+   ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill .
+   ?directSkill <http://www.tenforce.com/esco/java#fallbackLabel> ?directSkillFallbackLabel .
+   ?directSkill <http://www.w3.org/2004/02/skos/core#prefLabel> ?directSkillPrefLabel .
+
+   ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 .
+   ?directSkill_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?directSkill_v1FallbackLabel .
+   ?directSkill_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?directSkill_v1PrefLabel .
+
+   ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+   ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+   ?occupation <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupationPrefLabel .
+   ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skill_forOccupation .
+   ?skill_forOccupation <http://www.tenforce.com/esco/java#fallbackLabel> ?skill_forOccupationFallbackLabel .
+   ?skill_forOccupation <http://www.w3.org/2004/02/skos/core#prefLabel> ?skill_forOccupationPrefLabel .
+
+   ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupation_v1 .
+   ?occupation_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?occupation_v1FallbackLabel .
+   ?occupation_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupation_v1PrefLabel .
+   ?occupation_v1 <http://www.w3.org/2004/02/skos/core#related> ?skill_forOccupation_v1 .
+   ?skill_forOccupation_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skill_forOccupation_v1FallbackLabel .
+   ?skill_forOccupation_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?skill_forOccupation_v1PrefLabel .
+
+}
+where {
+  ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+  OPTIONAL { ?cv <http://purl.org/dc/terms/description> ?description . } .
+  OPTIONAL { ?cv <http://xmlns.com/foaf/0.1/givenName> ?givenName . } .
+
+  FILTER exists { ?cv <http://data.europa.eu/esco/semic/model#inSector> <http://data.europa.eu/esco/semic/sector#HOSP> . } .
+  FILTER exists { ?cv <http://data.europa.eu/esco/semic/model#toUse> "true"^^xsd:boolean . } .
+
+{s
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill .
+             ?directSkill <http://www.tenforce.com/esco/java#fallbackLabel> ?directSkillFallbackLabel .
+               OPTIONAL {
+                  ?directSkill <http://www.w3.org/2004/02/skos/core#prefLabel> ?directSkillPrefLabel . filter(lang(?directSkillPrefLabel) = ?language)
+               }
+  }
+}
+UNION
+{
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 .
+             ?directSkill_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?directSkill_v1FallbackLabel .
+               OPTIONAL {
+                  ?directSkill_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?directSkill_v1PrefLabel . filter(lang(?directSkill_v1PrefLabel) = ?language)
+               }
+  }
+}
+UNION
+{
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+             ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+             OPTIONAL {
+                ?occupation <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupationPrefLabel . filter(lang(?occupationPrefLabel) = ?language)
+             }
+        OPTIONAL {
+             ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skill .
+             ?skill <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/model#Skill> .
+             ?skill <http://www.tenforce.com/esco/java#fallbackLabel> ?skillFallbackLabel .
+             OPTIONAL {
+                ?skill <http://www.w3.org/2004/02/skos/core#prefLabel> ?skillPreflLabel . filter(lang(?skillPreflLabel) = ?language)
+             }
+        }
+  }
+}
+UNION
+{
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupation_v1 .
+             ?occupation_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?occupation_v1FallbackLabel .
+             OPTIONAL {
+                ?occupation_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupation_v1PrefLabel . filter(lang(?occupation_v1PrefLabel) = ?language)
+             }
+        OPTIONAL {
+             ?occupation_v1 <http://data.europa.eu/esco/model#relatedEssentialSkill> ?skill_forOccupation_v1 .
+             ?skill_forOccupation_v1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/model#Skill> .
+             ?skill_forOccupation_v1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skill_forOccupation_v1FallbackLabel .
+             OPTIONAL {
+                ?skill_forOccupation_v1 <http://www.w3.org/2004/02/skos/core#prefLabel> ?skill_forOccupation_v1PrefLabel . filter(lang(?skill_forOccupation_v1PrefLabel) = ?language)
+             }
+        }
+  }
+}}

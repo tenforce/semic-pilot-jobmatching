@@ -1,0 +1,37 @@
+construct {
+  ?jv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#JV> .
+  ?jv <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel .
+  ?jv <http://data.europa.eu/esco/semic/model#hasNace> ?nace .
+  ?nace <http://www.tenforce.com/esco/java#fallbackLabel> ?naceFallbackLabel .
+  ?nace <http://www.w3.org/2004/02/skos/core#prefLabel> ?nacePrefLabel .
+  ?jv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+  ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+  ?occupation <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupationPrefLabel .
+  ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skill .
+  ?skill <http://www.tenforce.com/esco/java#fallbackLabel> ?skillFallbackLabel .
+  ?skill <http://www.w3.org/2004/02/skos/core#prefLabel> ?skillPrefLabel .
+}
+where {
+ ?jv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#JV> .
+ ?jv  <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel .
+ OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+            ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+       OPTIONAL {
+            ?occupation <http://www.w3.org/2004/02/skos/core#prefLabel> ?occupationPrefLabel . filter(lang(?occupationPrefLabel) = ?language)
+       }
+       OPTIONAL {
+            ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skill .
+            ?skill <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/model#Skill> .
+            ?skill <http://www.tenforce.com/esco/java#fallbackLabel> ?skillFallbackLabel .
+            OPTIONAL {
+                ?skill <http://www.w3.org/2004/02/skos/core#prefLabel> ?skillPrefLabel . filter(lang(?skillPrefLabel) = ?language)
+            }
+       }
+ }
+ OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasNace> ?nace .
+            ?nace <http://www.tenforce.com/esco/java#fallbackLabel> ?naceFallbackLabel .
+            OPTIONAL {
+               ?nace <http://www.w3.org/2004/02/skos/core#prefLabel> ?nacePrefLabel . filter(lang(?nacePrefLabel) = ?language)
+            }
+          }
+}

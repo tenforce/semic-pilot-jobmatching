@@ -1,0 +1,459 @@
+{
+    "medical practice": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.86"
+    ],
+    "sporting goods": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.32"
+    ],
+    "capital markets": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "financial services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "industrial automation": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.33"
+    ],
+    "management consulting": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.70"
+    ],
+    "accounting": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.69"
+    ],
+    "marketing and advertising": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.73"
+    ],
+    "religious institutions": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.94"
+    ],
+    "market research": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.73"
+    ],
+    "education management": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.85"
+    ],
+    "facilities services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.81"
+    ],
+    "wine and spirits": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.56"
+    ],
+    "wholesale": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.46"
+    ],
+    "building materials": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.23"
+    ],
+    "law enforcement": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "computer networking": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.61"
+    ],
+    "consumer goods": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.32"
+    ],
+    "animation": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.59"
+    ],
+    "plastics": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.22"
+    ],
+    "higher education": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.85"
+    ],
+    "dairy": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.10"
+    ],
+    "arts and crafts": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "import and export": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.46"
+    ],
+    "information technology and services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.63",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.62"
+    ],
+    "graphic design": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.74"
+    ],
+    "philanthropy": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.82"
+    ],
+    "semiconductors": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.26"
+    ],
+    "museums and institutions": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.91"
+    ],
+    "mechanical or industrial engineering": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.71"
+    ],
+    "alternative medicine": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.86"
+    ],
+    "retail": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.47"
+    ],
+    "machinery": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.28"
+    ],
+    "hospitality": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.55"
+    ],
+    "government relations": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "public policy": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "leisure, travel & tourism": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.79",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.93"
+    ],
+    "online media": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.58"
+    ],
+    "public relations and communications": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "telecommunications": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.61"
+    ],
+    "textiles": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.13"
+    ],
+    "information services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.63"
+    ],
+    "mental health care": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.87"
+    ],
+    "railroad manufacture": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.30"
+    ],
+    "oil & energy": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.06",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.19",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.35"
+    ],
+    "construction": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.41"
+    ],
+    "think tanks": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.72"
+    ],
+    "public safety": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "executive office": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "food & beverages": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.56",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.10",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.11"
+    ],
+    "defense & space": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "package/freight delivery": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.52"
+    ],
+    "research": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.72"
+    ],
+    "venture capital & private equity": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "farming": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.01"
+    ],
+    "shipbuilding": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.30"
+    ],
+    "mining & metals": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.05",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.06",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.07",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.08",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.24"
+    ],
+    "legislative office": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "computer software": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.62"
+    ],
+    "environmental services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.74"
+    ],
+    "apparel & fashion": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.14"
+    ],
+    "tobacco": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.12"
+    ],
+    "real estate": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.68"
+    ],
+    "performing arts": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "alternative dispute resolution": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "gambling & casinos": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.92"
+    ],
+    "newspapers": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.58"
+    ],
+    "food production": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.10"
+    ],
+    "media production": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.59"
+    ],
+    "design": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "staffing and recruiting": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.78"
+    ],
+    "publishing": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.58"
+    ],
+    "broadcast media": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.60"
+    ],
+    "libraries": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.91"
+    ],
+    "security and investigations": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "sports": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.93"
+    ],
+    "fine art": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "architecture & planning": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.71"
+    ],
+    "furniture": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.31"
+    ],
+    "chemicals": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.20"
+    ],
+    "international affairs": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "military": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "primary/secondary education": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.85"
+    ],
+    "computer hardware": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.26"
+    ],
+    "automotive": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.29"
+    ],
+    "logistics and supply chain": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.52"
+    ],
+    "utilities": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.42"
+    ],
+    "non-profit organization management": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.94"
+    ],
+    "pharmaceuticals": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.21"
+    ],
+    "maritime": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.50"
+    ],
+    "consumer services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.94"
+    ],
+    "international trade and development": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "medical devices": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.72",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.26"
+    ],
+    "professional training & coaching": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.85"
+    ],
+    "transportation/trucking/railroad": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.49"
+    ],
+    "commercial real estate": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.68"
+    ],
+    "writing and editing": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "renewables & environment": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.74",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.35"
+    ],
+    "printing": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.58"
+    ],
+    "translation and localization": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.74"
+    ],
+    "events services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.56"
+    ],
+    "health, wellness and fitness": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.93"
+    ],
+    "ranching": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.01"
+    ],
+    "program development": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.82"
+    ],
+    "computer & network security": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.61",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.62"
+    ],
+    "veterinary": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.75"
+    ],
+    "law practice": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "fund-raising": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.82"
+    ],
+    "individual & family services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.88"
+    ],
+    "e-learning": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.85"
+    ],
+    "internet": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.63"
+    ],
+    "investment management": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "airlines/aviation": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.51",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.30"
+    ],
+    "paper & forest products": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.16",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.17"
+    ],
+    "civil engineering": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.42"
+    ],
+    "insurance": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.65"
+    ],
+    "electrical/electronic manufacturing": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.26",
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.27"
+    ],
+    "motion pictures and film": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.59"
+    ],
+    "aviation & aerospace": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.30"
+    ],
+    "government administration": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "luxury goods & jewelry": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.32"
+    ],
+    "photography": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "supermarkets": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.47"
+    ],
+    "glass, ceramics & concrete": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.23"
+    ],
+    "biotechnology": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.72"
+    ],
+    "investment banking": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "human resources": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.78"
+    ],
+    "wireless": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.61"
+    ],
+    "warehousing": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.52"
+    ],
+    "cosmetics": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.46"
+    ],
+    "computer games": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.62"
+    ],
+    "banking": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.64"
+    ],
+    "judiciary": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "restaurants": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.56"
+    ],
+    "music": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "consumer electronics": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.26"
+    ],
+    "fishery": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.03"
+    ],
+    "hospital & health care": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.86"
+    ],
+    "legal services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "outsourcing/offshoring": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.49"
+    ],
+    "entertainment": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.90"
+    ],
+    "civic & social organization": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.84"
+    ],
+    "recreational facilities and services": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.93"
+    ],
+    "political organization": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.94"
+    ],
+    "business supplies and equipment": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.82"
+    ],
+    "packaging and containers": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.52"
+    ],
+    "nanotechnology": [
+        "http://data.europa.eu/esco/ConceptScheme/NACErev2/c.72"
+    ]
+}

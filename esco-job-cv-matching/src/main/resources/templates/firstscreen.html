@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Skill-based CV/JV matching</title>
+
+  <link th:href="@{/resources/css/animate.css}" href="css/animate.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/css/reset.css}" href="css/reset.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/css/style.css}" href="css/style.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/font-awesome/css/font-awesome.min.css}" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,400,300,700&amp;subset=latin,cyrillic-ext" media="all" rel="stylesheet" type="text/css"/>
+
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.3.min.js}" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" th:src="@{/resources/bootstrap/js/bootstrap.js}" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<div class="main">
+  <div class="esco_logo"></div>
+  <div class="isa_logo"></div>
+  <div class="project_title">Skill-based CV/JV matching</div>
+  <div class="description">Select job vacancy or CV to find best matches on the labour market.</div>
+  <div class="btn-group" role="group" aria-label="...">
+    <button type="button" class="btn btn-default active">JV</button>
+    <button type="button" class="btn btn-default">CV</button>
+  </div>
+  <div class="list-group">
+    <a href="#" class="list-group-item" th:href="@{/matching(type='jv',uri=${jv.key})}" th:text="${jv.value}" th:each="jv : ${jvs}">Cras justo odio</a>
+  </div>
+
+
+</div>
+
+
+<script>
+  /*<![CDATA[*/
+
+  $(function () {
+    var resultsField = $('#results');
+
+    resultsField.carousel({
+      pause: true,
+      interval: false
+    });
+
+    // handles the carousel thumbnails
+    $('[id^=carousel-selector-]').hover(function () {
+      var id_selector = $(this).attr("id");
+      var id = id_selector.substr(id_selector.length - 1);
+      id = parseInt(id);
+      $('#results').carousel(id - 1);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $(this).addClass('selected');
+    });
+
+    // when the carousel slides, auto update
+    resultsField.on('slid.bs.carousel', function (e) {
+      var id = $('.item.active').data('slide-number');
+      id = parseInt(id);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $('[id=carousel-selector-' + id + ']').addClass('selected');
+    });
+  });
+
+  /*]]>*/
+</script>
+
+
+</body>
+</html>

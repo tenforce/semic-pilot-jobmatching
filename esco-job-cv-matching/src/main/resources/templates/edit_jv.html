@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - Edit JV info</title>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../static/resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../static/resources/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" th:src="@{/resources/jqueryui/jquery-ui-1.10.4.custom.min.js}"></script>
+  <link th:href="@{/resources/jqueryui/jquery-ui-1.10.4.custom.min.css}" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/overlay.css}" href="../resources/overlay.css" media="all" rel="stylesheet" type="text/css"/>
+
+  <script th:inline="javascript">
+    /*<![CDATA[*/
+
+    //@formatter:off
+    var serviceApiUrl = [[${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).serviceApiUrl}]];
+    var authorizationHeaderValue = [[${authorizationHeaderValue}]];
+    var addSkillAjaxUrl = [[@{/editJV/addSkillAjax}]];
+    var jvUri = [[${jv.uri}]];
+    //@formatter:on
+
+    function swapHiddenSkills(occupationLabel) {
+      $(occupationLabel).parent().children("ul").each(function (i) {
+        $(this).toggle();
+      });
+    }
+    function addOccupation(linkElement) {
+      $(linkElement).parent().submit();
+    }
+
+    $(function () {
+      $("#skillSearchTerm").autocomplete({minLength: 2, source: sourceSkill, select: selectSkill, change: clearOnChange}).keyup(hideAutocomplete);
+      $("#occupationSearchTerm").autocomplete({minLength: 2, source: sourceOccupation, select: selectOccupation, change: clearOnChange}).keyup(hideAutocomplete);
+    });
+
+    function sourceOccupation(request, response) {
+      source("http%3A%2F%2Fdata.europa.eu%2Fesco%2FautocompleteCollection.occ", request, response);
+    }
+    function sourceSkill(request, response) {
+      source("http%3A%2F%2Fdata.europa.eu%2Fesco%2FautocompleteCollection.sc", request, response);
+    }
+    function source(collectionUri, request, response) {
+      var url = serviceApiUrl + "searchTypeAhead;collection=" + collectionUri + ";language=" + $("#languageSelector").val() + ";text=" + encodeURIComponent(request.term);
+
+      $.ajaxSetup(null != authorizationHeaderValue ? {
+        headers: {
+          'Authorization': authorizationHeaderValue
+        }
+      } : {});
+
+      $.getJSON(url, null, function (data) {
+        responseFunction(data, response);
+      });
+    }
+    function responseFunction(data, response) {
+      var keywords = data["codedKeyword"];
+      var result = [];
+      if (keywords) {
+        for (var i = 0; i < keywords.length; i++) {
+          var thisUri = keywords[i].uri;
+          var lastPart = thisUri.substring(thisUri.lastIndexOf('/') + 1);
+          if (+lastPart !== +lastPart) result.push({label: keywords[i].label, uri: thisUri});
+        }
+      }
+      response(result);
+    }
+    function clearOnChange() {
+      $(this).val("");
+    }
+    function hideAutocomplete(e) {
+      if (e.which === 13) $(".ui-menu-item").hide();
+    }
+    function selectSkill(event, ui) {
+      $("#addSkillUri").val(ui.item.uri);
+      $("#addSkillForm").submit();
+      return false;
+    }
+    function selectOccupation(event, ui) {
+      $("#addOccupationUri").val(ui.item.uri);
+      $("#addOccupationForm").submit();
+      return false;
+    }
+    function closeOverlay() {
+      $("#ajaxOverlay").hide();
+    }
+    function addSkill(skillUri, label) {
+      $("#ajaxMessageBox").html("Adding skill...");
+      $("#ajaxOverlay").show();
+
+      var data = {};
+      data['jvUri'] = jvUri;
+      data['skillUri'] = skillUri;
+
+      $.ajax(
+              {
+                url: addSkillAjaxUrl,
+                type: 'post',
+                data: data,
+
+                success: function () {
+                  closeOverlay();
+                  $("#directV1SkillsNone").hide();
+                  $("#directV1SkillsList").append("<li><p>" + label + "</p></li>");
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                  $("#ajaxDoneMessage").html("Upload data failed: " + errorThrown);
+                  $("#ajaxMessageBox").html($("#ajaxDone").html());
+                }
+              });
+
+    }
+    /*]]>*/
+  </script>
+  <style>
+    .link {
+      color: blue;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<div id="ajaxOverlay" class="overlay">
+  <div class="overlayBox" id="ajaxMessageBox"></div>
+</div>
+<div style="display: none;" id="ajaxDone">
+  <div id="ajaxDoneMessage"></div>
+  <button id="ajaxCloseButton" onclick="closeOverlay();">OK</button>
+</div>
+
+<div class="form-group">
+  <form action="" method="get" th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+    <input type="hidden" name="uri" th:value="${jv.uri}"/>
+    <label for="languageSelector">Language: </label>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+</div>
+
+<h2>Edit JV</h2>
+
+<table width="70%" class="table table-small table-striped">
+  <tr>
+    <td align="left" valign="top">URL</td>
+    <td th:text="${jv.uri}">JV uri</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Label</td>
+    <td th:text="${jv.label}">Label comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Description</td>
+    <td th:text="${jv.description}">Description comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Occupational Category</td>
+    <td th:text="${jv.occupationalCategory}">Occupational Category comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Direct v0 skills</td>
+    <td>
+      <ul>
+        <li th:if="${#lists.isEmpty(jv.directSkills)}">No direct v0 ESCO skills found for this JV</li>
+        <li th:each="skill : ${jv.directSkills}">
+          <p th:text="${skill.label}">Direct v0 skill label here</p>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Direct v1 skills</td>
+    <td>
+      <ul id="directV1SkillsList">
+        <li th:if="${#lists.isEmpty(jv.directV1Skills)}" id="directV1SkillsNone">No direct v1 ESCO skills found for this JV</li>
+        <li th:each="skill : ${jv.directV1Skills}">
+          <p th:text="${skill.label}">Direct v1 skill label here</p>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Occupations &amp; skills</td>
+    <td>
+      <ul>
+        <li th:each="occupation : ${jv.occupations}">
+          <p th:text="${occupation.label}" onclick="$(this).parent().children('ul').toggle()">Occupation label here</p>
+          <ul style="display: none;">
+            <li th:if="${#lists.isEmpty(occupation.skills)}">No ESCO skills defined for this ESCO occupation</li>
+            <li th:text="${skill.label}" th:each="skill : ${occupation.skills}">Skill label here...</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+  </tr>
+</table>
+
+
+<h3>Search new skills/occupations</h3>
+Add occupation: <input type="text" name="occupationSearchTerm" id="occupationSearchTerm" class="form-control" placeholder="Search for an occupation"/><br/>
+Add skill: <input type="text" name="skillSearchTerm" id="skillSearchTerm" class="form-control" placeholder="Search for an skill"/><br/>
+
+
+<h3>Proposed ESCO occupations (via v0 occ to v1 occ)</h3>
+<h4>Essential</h4>
+<ul>
+  <li th:if="${#lists.isEmpty(proposedEssentialSkills)}">Nothing found</li>
+  <li th:each="skill : ${proposedEssentialSkills}">
+      <span th:text="${skill.label}">Essential v1 Skill label</span>
+      <span class="link" th:attr="onclick=|addSkill('${skill.uri}', '${skill.label}');|">Add skill</span>
+    </li>
+</ul>
+
+<h4>Optional</h4>
+<ul>
+  <li th:if="${#lists.isEmpty(proposedOptionalSkills)}">Nothing found</li>
+  <li th:each="skill : ${proposedOptionalSkills}">
+    <span th:text="${skill.label}">Optional v1 Skill label</span>
+    <span class="link" th:attr="onclick=|addSkill('${skill.uri}', '${skill.label}');|">Add skill</span>
+  </li>
+</ul>
+
+<h3>Proposed ESCO occupations (via nace)</h3>
+<ul class="escolist">
+  <li th:each="proposedOccupation : ${proposedOccupations}">
+    <p th:text="|Nace (ESCO): ${proposedOccupation.key.label}|">Nace label here</p>
+    <ul>
+      <li th:each="occupation : ${proposedOccupation.value}">
+        <form th:attr="action=@{/editJV/addOccupation}" method="POST">
+          <span class="link" th:text="|${occupation.label} (ESCO occupation)|" onclick="swapHiddenSkills(this)">Occupation label here</span>
+          <span th:text="|${#lists.size(occupation.skills)} ESCO skill(s)|"> - 5 skills - </span>
+          <input type="hidden" name="jvUri" th:attr="value=${jv.uri}"/>
+          <input type="hidden" name="occupationUri" th:attr="value=${occupation.uri}"/>
+          <span class="link" onclick="$(this).parent().submit()" th:text="|Add ESCO occupation (${occupation.uri})|">Add occupation</span>
+          <ul style="display: none;">
+            <li th:if="${#lists.isEmpty(occupation.skills)}">No ESCO skills defined for this ESCO occupation</li>
+            <li th:each="skill : ${occupation.skills}">
+              <span th:text="${skill.label}">Skill label</span>
+              <span class="link" th:attr="onclick=|addSkill('${skill.uri}', '${skill.label}');|">Add skill</span>
+            </li>
+          </ul>
+        </form>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<form id="addOccupationForm" th:attr="action=@{/editJV/addOccupation}" method="POST">
+  <input type="hidden" name="jvUri" th:attr="value=${jv.uri}"/>
+  <input type="hidden" id="addOccupationUri" name="occupationUri"/>
+</form>
+<form id="addSkillForm" th:attr="action=@{/editJV/addSkill}" method="POST">
+  <input type="hidden" name="jvUri" th:attr="value=${jv.uri}"/>
+  <input type="hidden" id="addSkillUri" name="skillUri"/>
+</form>
+</body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - View JV info</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="form-group">
+  <form action="" method="get" th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+    <input type="hidden" name="uri" th:value="${jv.uri}"/>
+    <label for="languageSelector">Language: </label>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+</div>
+
+<h2>JV</h2>
+
+<table class="table table-small table-striped">
+  <tbody>
+  <tr>
+    <td align="left" valign="top">URL</td>
+    <td th:text="${jv.uri}">JV uri</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Label</td>
+    <td th:text="${jv.label}">Label comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Description</td>
+    <td th:text="${jv.description}">Description comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Nace codes (ESCO)</td>
+    <td>
+      <ul>
+        <li th:text="${nace.label}" th:each="nace : ${jv.naces}">Nace label here...</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Hiring Organization</td>
+    <td th:text="${jv.hiringOrganizationName}">hiringOrganizationName</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Employment Type</td>
+    <td th:text="${jv.employmentType}">employmentType</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Experience Level</td>
+    <td th:text="${jv.experienceLevel}">experienceLevel</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Geoname</td>
+    <td><a th:attr="href=${jv.geonameUri}" th:text="${jv.geonameLabel}" target="_blank">geoname</a></td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Occupational Category</td>
+    <td th:text="${jv.occupationalCategory}">Occupational Category comes here</td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Direct v0 skills (ESCO)</td>
+    <td>
+      <ul>
+        <li th:text="${skill.label}" th:each="skill : ${jv.directSkills}">Skill label here...</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Direct v1 skills (ESCO)</td>
+    <td>
+      <ul>
+        <li th:text="${skill.label}" th:each="skill : ${jv.directV1Skills}">Skill v1 label here...</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td align="left" valign="top">Occupations &amp; skills (ESCO)</td>
+    <td>
+      <ul>
+        <li th:each="occupation : ${jv.occupations}">
+          <p th:text="${occupation.label}" onclick="$(this).parent().children('ul').toggle()">Occupation lablel here</p>
+          <ul style="display: none;">
+            <li th:text="${skill.label}" th:each="skill : ${occupation.skills}">Skill label here...</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p class="bg-primary" th:if="${#lists.isEmpty(jv.directSkills)}">No ESCO skills found in  this JV.</p>
+
+<div th:unless="${#lists.isEmpty(jv.directSkills)}">
+  <p class="bg-success">Matched via <b th:text="${#lists.size(jv.directSkills)}">1</b> ESCO skills.</p>
+
+  <table class="table table-small table-striped">
+    <thead>
+    <tr>
+      <th align="left" valign="top">URL</th>
+      <th align="left" valign="top">Label</th>
+      <th align="left" valign="top">Matching Skills (ESCO)</th>
+      <th align="left" valign="top">Match in %</th>
+      <th align="left" valign="top">Graph</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cv : ${cvs}">
+      <td><a th:href="@{/cv(uri=${cv.uri})}" th:text="${cv.uri}">CV uri</a></td>
+      <td th:text="${cv.description}">Description comes here</td>
+      <td>
+        <ul>
+          <li th:text="${skill.label}" th:each="skill : ${cv.skills}">Item description here...</li>
+        </ul>
+      </td>
+      <!--<td th:text="${#numbers.formatDecimal(#lists.size(cv.skills)*100/#lists.size(jv.allSkills), 1, 0, 'POINT')} + '%'"></td>-->
+      <td th:text="${cv.score} + '%'"></td>
+      <td><a th:href="@{/graph(cvUri=${cv.uri},jvUri=${jv.uri})}">See graph</a></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+
+</body>
+</html>

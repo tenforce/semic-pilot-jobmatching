@@ -1,0 +1,51 @@
+construct {
+  ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+  ?cv <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel .
+
+  ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+  ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+  ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skillForOccupation .
+  ?skillForOccupation <http://www.tenforce.com/esco/java#fallbackLabel> ?skillForOccupationFallbackLabel .
+
+  ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupationV1 .
+  ?occupationV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationV1FallbackLabel .
+  ?occupationV1 <http://www.w3.org/2004/02/skos/core#related> ?skillForOccupationV1 .
+  ?skillForOccupationV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skillForOccupationV1FallbackLabel .
+
+  ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?skill .
+  ?skill <http://www.tenforce.com/esco/java#fallbackLabel> ?skillFallbackLabel .
+
+  ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?skillV1 .
+  ?skillV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skillV1FallbackLabel .
+}
+where {
+ ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+
+ OPTIONAL { ?cv  <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel . }
+
+ OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?skill .
+            ?skill <http://www.tenforce.com/esco/java#fallbackLabel> ?skillFallbackLabel . }
+
+ OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?skillV1 .
+            ?skillV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skillV1FallbackLabel . }
+
+ OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+            ?occupation <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationFallbackLabel .
+       OPTIONAL {
+            ?occupation <http://www.w3.org/2004/02/skos/core#related> ?skillForOccupation .
+            ?skillForOccupation <http://www.tenforce.com/esco/java#fallbackLabel> ?skillForOccupationFallbackLabel .
+            FILTER exists {?skillForOccupation <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/model#Skill> }
+       }
+ }
+
+ OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupationV1 .
+            ?occupationV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?occupationV1FallbackLabel .
+       OPTIONAL {
+            ?occupationV1 <http://www.w3.org/2004/02/skos/core#related> ?skillForOccupationV1 .
+            ?skillForOccupationV1 <http://www.tenforce.com/esco/java#fallbackLabel> ?skillForOccupationV1FallbackLabel .
+            FILTER exists {?skillForOccupationV1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/model#Skill> }
+       }
+ }
+
+ FILTER exists { ?cv <http://data.europa.eu/esco/semic/model#inSector> <http://data.europa.eu/esco/semic/sector#HOSP> . }
+}

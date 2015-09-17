@@ -1,0 +1,24 @@
+
+construct {
+   ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+   ?cv <http://purl.org/dc/terms/description> ?description .
+   ?cv <http://xmlns.com/foaf/0.1/givenName> ?givenName .
+
+#   ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill .
+   ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 .
+#   ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+   ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupation_v1 .
+}
+where {
+  ?cv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#CV> .
+  OPTIONAL { ?cv <http://purl.org/dc/terms/description> ?description . } .
+  OPTIONAL { ?cv <http://xmlns.com/foaf/0.1/givenName> ?givenName . } .
+
+  FILTER exists { ?cv <http://data.europa.eu/esco/semic/model#inSector> <http://data.europa.eu/esco/semic/sector#HOSP> . } .
+  FILTER exists { ?cv <http://data.europa.eu/esco/semic/model#toUse> "true"^^xsd:boolean . } .
+
+#  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill . }
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 . }
+#  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation . }
+  OPTIONAL { ?cv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupation_v1 . }
+}

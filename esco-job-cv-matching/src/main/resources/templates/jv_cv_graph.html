@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta name="robots" content="noindex"/>
+  <meta charset="utf-8"/>
+  <title>Job CV matching demo</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" th:src="@{/resources/cytoscape.min.js}" src="../resources/cytoscape.min.js"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+  <style id="jsbin-css">
+    body {
+      font: 14px helvetica neue, helvetica, arial, sans-serif;
+    }
+
+    #cy {
+      height: 90%;
+      width: 90%;
+      position: absolute;
+      left: 5%;
+      top: 10%;
+    }
+  </style>
+</head>
+<body>
+
+<h2>Job - CV matching demo</h2>
+
+<div id="cy"></div>
+<script th:utext="'var data = ' + ${json} + ';'"></script>
+
+<script id="jsbin-javascript" th:inline="javascript">
+  /*<![CDATA[*/
+  $(function () { // on dom ready
+
+
+    var cy = cytoscape({
+                         container: document.getElementById('cy'),
+
+                         style: cytoscape.stylesheet()
+                                 .selector('node')
+                                 .css({
+                                        'content': 'data(label)',
+                                        'color': '#353535',
+                                        'text-valign': 'center',
+                                        'text-halign': 'center',
+                                        'text-weight': 'bold',
+                                        'font-size': 'large',
+
+                                        'height': 80,
+                                        'width': 160,
+                                        //'background-fit': 'cover',
+                                        'border-color': '#fff',
+                                        'border-width': 10,
+                                        'border-opacity': 0.5
+                                      })
+                                 .selector('node[type="Job"]')
+                                 .css({
+                                        'background-color': '#66717E'
+                                      })
+                                 .selector('node[type="Occupation"]')
+                                 .css({
+                                        'background-color': '#786F52'
+                                      })
+                                 .selector('node[type="Skill"]')
+                                 .css({
+                                        'border-width': 10,
+                                        'border-opacity': 0.8,
+                                        'background-color': '#FEB95F'
+                                      })
+                                 .selector('node[type="CV"]')
+                                 .css({
+                                        'background-color': '#F71735'
+                                      })
+                                 .selector('node[type="Skill"][?match]')
+                                 .css({
+
+                                        'border-color': 'green'
+                                      })
+                                 .selector('node[type="Skill"][!match]')
+                                 .css({
+                                        'border-color': 'red'
+                                      })
+                                 .selector('edge')
+                                 .css({
+                                        'width': 6
+                                      })
+                                 .selector('edge[type="Job"]')
+                                 .css({
+                                        'line-color': '#66717E',
+                                        'source-arrow-color': '#66717E',
+                                        'target-arrow-color': '#66717E'
+                                      })
+                                 .selector('edge[type="Occupation"]')
+                                 .css({
+                                        'line-color': '#786F52',
+                                        'source-arrow-color': '#786F52',
+                                        'target-arrow-color': '#786F52'
+                                      })
+                                 .selector('edge[type="CV"]')
+                                 .css({
+                                        'line-color': '#F71735',
+                                        'source-arrow-color': '#F71735',
+                                        'target-arrow-color': '#F71735',
+                                        'source-arrow-shape': 'triangle',
+                                        'target-arrow-shape': 'none'
+                                      })
+                                 .selector('edge[type!="CV"]')
+                                 .css({
+                                        'source-arrow-shape': 'none',
+                                        'target-arrow-shape': 'triangle'
+                                      }),
+
+                         elements: data,
+
+                         layout: {
+                           name: 'breadthfirst',
+                           directed: true,
+                           //@formatter:off
+                           roots: [[${rootUri}]],
+                           //@formatter:on
+                           padding: 0
+                         }
+                       }); // cy init
+
+
+  }); // on dom ready
+  /*]]>*/
+</script>
+</body>
+</html>

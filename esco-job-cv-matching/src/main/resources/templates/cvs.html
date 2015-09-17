@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - list CVs</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="form-group">
+  <form action="" method="get" th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+    <label for="languageSelector">Language: </label>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+</div>
+
+<h2>List all CVs</h2>
+<table width="70%" class="table table-small table-striped">
+  <thead>
+  <tr>
+    <th align="left" valign="top">URL</th>
+    <th align="left" valign="top">Label</th>
+    <th align="left" valign="top">ESCO Skills v0</th>
+    <th align="left" valign="top">ESCO Skills v1</th>
+    <th align="left" valign="top">ESCO Occupations</th>
+    <th align="left" valign="top"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="cv : ${cvs}">
+    <td><a th:href="@{/cv(uri=${cv.uri})}" th:text="${cv.uri}">CV uri</a></td>
+    <td th:text="${cv.description}">Description comes here</td>
+    <td>
+      <ul>
+        <li th:text="${skill.label}" th:each="skill : ${cv.skills}">Item description here...</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li th:text="${skill.label}" th:each="skill : ${cv.skillsV1}">Item description here...</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li th:text="${occupation.label}" th:each="occupation : ${cv.occupations}">Item description here...</li>
+      </ul>
+    </td>
+    <td>
+      <button th:if="${cv.hasDocument}" class="btn btn-primary" th:attr="onclick=|document.location = '@{/document(uri=${cv.uri})}';|">Annotate</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

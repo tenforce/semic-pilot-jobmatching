@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - list jobs</title>
+</head>
+<body>
+<h2>List all jobs</h2>
+<table width="30%">
+  <tr>
+    <th align="left">URL</th>
+    <th align="left">Label</th>
+  </tr>
+  <tr th:each="job : ${jobs}">
+    <td><a th:href="@{/job/{jobId}(jobId=${job.id})}" th:text="${job.uri}">Product List</a></td>
+    <td th:text="${job.label}">Label comes here</td>
+  </tr>
+
+</table>
+
+</body>
+</html>

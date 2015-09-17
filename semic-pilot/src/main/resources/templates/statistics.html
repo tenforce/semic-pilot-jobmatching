@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Skill based job matching</title>
+  <!--<link th:href="@{/resources/css/animate.css}" href="css/animate.css" media="all" rel="stylesheet" type="text/css"/>-->
+  <!--<link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>-->
+  <!--<link th:href="@{/resources/css/reset.css}" href="css/reset.css" media="all" rel="stylesheet" type="text/css"/>-->
+  <!--<link th:href="@{/resources/css/style.css}" href="css/style.css" media="all" rel="stylesheet" type="text/css"/>-->
+  <!--<link th:href="@{/resources/font-awesome/css/font-awesome.min.css}" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>-->
+  <!--<script type="text/javascript" th:src="@{/resources/jquery-1.11.3.min.js}" src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
+  <!--<script type="text/javascript" th:src="@{/resources/bootstrap/js/bootstrap.js}" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>-->
+
+
+  <link href="resources/css/animate.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="resources/css/reset.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="resources/css/style.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="resources/font-awesome/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,400,300,700&amp;subset=latin,cyrillic-ext" media="all" rel="stylesheet" type="text/css"/>
+
+  <script type="text/javascript" src="resources/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" src="resources/bootstrap/js/bootstrap.js"></script>
+</head>
+
+<body>
+
+
+<header>
+  <a class="esco_logo" href=".."/>
+  <a href="http://semic.eu" class="semic">SEMIC</a>
+</header>
+
+<div class="control animated slideInDown">
+
+  <div class="your_document">Market Analytics</div>
+  <div class="block_title">Display as</div>
+  <div class="btn-group btn-group" role="group" aria-label="...">
+    <button type="button" id="rankingButton" class="btn btn-default">Ranking</button>
+    <button type="button" id="cloudButton" class="btn btn-default active">Heat map</button>
+  </div>
+</div>
+
+<div class="statistics">
+  <div id="data_v1_cloud" class="cloud" th:include="data/data_v1_cloud :: data"></div>
+  <div id="data_v1_ranking" style="display: none;">
+    <div class="ratings">
+      <h4>Skills most requested in job vacancies</h4>
+      <ul th:include="data/data_v1_ranking_request :: data"></ul>
+      <a id="topRequestedV1More">Show more...</a>
+    </div>
+    <div class="ratings">
+      <h4>Skills most offered in CV's</h4>
+      <ul th:include="data/data_v1_ranking_offer :: data"></ul>
+      <a id="topOfferedV1More">Show more...</a>
+    </div>
+    <div class="ratings">
+      <h4>Most requested skills and not available (gap)</h4>
+      <ul th:include="data/data_v1_ranking_gap :: data"></ul>
+      <a id="topGapV1More">Show more...</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="linkedin_logo">
+  </div>
+  <div class="vdab_logo">
+  </div>
+  <div class="eures_logo">
+  </div>
+</footer>
+
+<script>
+  /*<![CDATA[*/
+  var typeToShow = 'cloud';
+  var rankingData = {
+    "topRequestedV1": 0,
+    "topOfferedV1": 0,
+    "topGapV1": 0
+  };
+  $(function () {
+//    $("#homeButton").click(function () {
+//      document.location = "..";
+//    });
+    $("#cloudButton").click(function () {
+      typeToShow = "cloud";
+      $("#cloudButton").addClass("active");
+      $("#rankingButton").removeClass("active");
+      $("#data_v1_ranking").hide();
+      $("#data_v1_cloud").show();
+    });
+    $("#rankingButton").click(function () {
+      typeToShow = "ranking";
+      $("#cloudButton").removeClass("active");
+      $("#rankingButton").addClass("active");
+      $("#data_v1_ranking").show();
+      $("#data_v1_cloud").hide();
+    });
+
+    $("#topRequestedV1More").click({source: $(this), listName: "topRequestedV1"}, showMore);
+    $("#topOfferedV1More").click({source: $(this), listName: "topOfferedV1"}, showMore);
+    $("#topGapV1More").click({source: $(this), listName: "topGapV1"}, showMore);
+  });
+  function showMore(event) {
+    var listName = event.data.listName;
+    console.log("show more for " + listName);
+    var currentIndex = rankingData[listName];
+    currentIndex++;
+    rankingData[listName] = currentIndex;
+
+    $("li[" + listName + "='" + currentIndex + "']").show();
+    currentIndex++;
+    if ($("li[" + listName + "='" + currentIndex + "']").length == 0) {
+      console.log("hiding for " + listName);
+      $(this).hide();
+    }
+  }
+  /*]]>*/
+</script>
+</body>
+</html>

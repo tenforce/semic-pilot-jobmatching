@@ -1,0 +1,33 @@
+
+construct {
+   ?jv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#JV> .
+   ?jv <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel .
+   ?jv <http://data.europa.eu/esco/semic/model#hasNace> ?nace .
+   ?jv <http://data.europa.eu/esco/semic/model#hiringOrganizationName> ?hiringOrganizationName .
+   ?jv <http://data.europa.eu/esco/semic/model#employmentType> ?employmentType .
+   ?jv <http://data.europa.eu/esco/semic/model#experienceLevel> ?experienceLevel .
+   ?jv <http://data.europa.eu/esco/semic/model#geonameUri> ?geonameUri .
+   ?jv <http://data.europa.eu/esco/semic/model#geoname> ?geonameLabel .
+   ?jv <http://data.europa.eu/esco/semic/model#occupationalCategory> ?occupation2alCategory .
+   ?jv <http://purl.org/dc/terms/description> ?description .
+#   ?jv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill .
+   ?jv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 .
+#   ?jv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation .
+   ?jv <http://data.europa.eu/esco/semic/model#hasOccupation_v1> ?occupationV1 .
+}
+where {
+   ?jv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#JV> .
+   ?jv <http://www.w3.org/2004/02/skos/core#prefLabel> ?prefLabel .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hiringOrganizationName> ?hiringOrganizationName . } .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#employmentType> ?employmentType . } .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#experienceLevel> ?experienceLevel . } .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#geonameUri> ?geonameUri . } .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#geoname> ?geonameLabel . } .
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#occupationalCategory> ?occupationalCategory . } .
+   OPTIONAL { ?jv <http://purl.org/dc/terms/description> ?description . } .
+#   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasSkill> ?directSkill . }
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?directSkill_v1 .}
+#   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupation . }
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasOccupation> ?occupationV1 .}
+   OPTIONAL { ?jv <http://data.europa.eu/esco/semic/model#hasNace> ?nace .   }
+}

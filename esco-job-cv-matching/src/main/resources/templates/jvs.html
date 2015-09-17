@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Job CV matching - list JVs</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="form-group">
+  <form action="" method="get" th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+    <label for="languageSelector">Language: </label>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+</div>
+
+<h2>List all JVs</h2>
+<table width="70%" class="table table-small table-striped">
+  <thead>
+  <tr>
+    <th align="left" valign="top">URL</th>
+    <th align="left" valign="top">Label</th>
+    <th align="left" valign="top">Nace (ESCO)</th>
+    <th align="left" valign="top">ESCO Occupation/Skills</th>
+    <th align="left" valign="top">Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="jv : ${jvs}">
+    <td valign="top"><a th:href="@{/jv(uri=${jv.uri})}" th:text="${jv.uri}">JV uri</a></td>
+    <td valign="top" th:text="${jv.label}">Label comes here</td>
+
+
+    <td valign="top">
+      <ul>
+        <li th:each="nace : ${jv.naces}" th:text="${nace.label}">Nace label here</li>
+      </ul>
+    </td>
+    <td valign="top">
+      <ul>
+        <li th:each="occupation : ${jv.occupations}">
+          <p th:text="${occupation.label}">Occupation lablel here</p>
+          <ul>
+            <li th:text="${skill.label}" th:each="skill : ${occupation.skills}">Skill label here...</li>
+          </ul>
+        </li>
+      </ul>
+    </td>
+    <td>
+      <button class="btn btn-primary" th:attr="onclick=|document.location = '@{/editJV(uri=${jv.uri})}';|">Edit occ</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

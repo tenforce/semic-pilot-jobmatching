@@ -1,0 +1,2 @@
+include "esco-job-cv-matching", "afepa-demo", "semic-pilot"
+rootProject.name = 'semic-pilot'

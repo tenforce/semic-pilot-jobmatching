@@ -1,0 +1,12 @@
+select ?jv ?label where {
+  ?jv <http://www.w3.org/2004/02/skos/core#prefLabel> ?label .
+  filter exists {
+    ?jv <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.europa.eu/esco/semic/model#JV> .
+  } .
+  filter exists {
+    ?jv <http://data.europa.eu/esco/semic/model#hasSkill> ?skill_v0 .
+  } .
+  filter exists {
+    ?jv <http://data.europa.eu/esco/semic/model#hasSkill_v1> ?skill_v1 .
+  } .
+}

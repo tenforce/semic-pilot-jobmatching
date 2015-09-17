@@ -1,0 +1,14 @@
+/.idea
+/.gradle
+
+/target
+/target-intelliJ
+/*/target
+/*/target-intelliJ
+/build
+/*/build
+
+/*.iml
+/*/*.iml
+
+/**/resources/rebel.xml

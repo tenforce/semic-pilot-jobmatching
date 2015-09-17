@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8"/>
+  <title>Annotate documents</title>
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.0.min.js}" src="../resources/jquery-1.11.0.min.js"></script>
+  <script type="text/javascript" th:src="@{/resources/contextMenu/jquery.contextMenu.js}" src="../resources/contextMenu/jquery.contextMenu.js"></script>
+  <script type="text/javascript" th:src="@{/resources/rangy-core.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/bootstrap/js/bootstrap.js}"></script>
+  <link th:href="@{/resources/contextMenu/jquery.contextMenu.css}" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="../resources/bootstrap/css/bootstrap.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/overlay.css}" href="../resources/overlay.css" media="all" rel="stylesheet" type="text/css"/>
+</head>
+<body th:with="language=${#httpServletRequest.getLocale().getLanguage()}">
+
+<div class="form-group">
+  <label for="languageSelector">Language: </label>
+  <select name="language" id="languageSelector" onchange="changeLanguage($(this).val())">
+    <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+            th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+    </option>
+  </select>
+</div>
+
+<div class="form-group">
+  <button type="button" class="btn btn-success" id="uploadData">Upload current data</button>
+</div>
+
+<div role="tabpanel" class="col-sm-12">
+  <ul class="nav nav-tabs" role="tablist" id="semicTab">
+    <li role="presentation" class="active"><a href="#documentTabContent" aria-controls="document" role="tab" data-toggle="tab">Document</a></li>
+    <li role="presentation"><a href="#taggedSkillsTabContent" aria-controls="taggedSkills" role="tab" data-toggle="tab">Tagged skills</a></li>
+    <li role="presentation"><a href="#taggedOccupationsTabContent" aria-controls="taggedOccupations" role="tab" data-toggle="tab">Tagged occupations</a></li>
+  </ul>
+</div>
+
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="documentTabContent">
+    <div id="documentContent" th:utext="${documentContent}"></div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="taggedSkillsTabContent">
+    <div class="col-sm-6  col-sm-offset-3 form">
+      <form onsubmit="return searchSkills();">
+
+        <div class="form-group">
+          <label for="skillSearchString">Search for skill: </label>
+          <input class="form-control" id="skillSearchString" type="text"/>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Search skills"/>
+        </div>
+
+      </form>
+      <div class="form-group">
+
+        <textarea class="form-control" readonly="true" id="skillSearchResult" rows="10" cols="120"></textarea>
+      </div>
+
+      <!--<button type="button" class="btn btn-danger" id="toggle-disabled">Disable Menu</button>-->
+      <!--<button type="button" class="btn btn-success" id="uploadData">Upload current data</button>-->
+    </div>
+    <div class="col-sm-12">
+      <ul id="taggedSkillsList"></ul>
+    </div>
+  </div>
+  <div role="tabpanel" class="tab-pane" id="taggedOccupationsTabContent">
+    <div class="col-sm-6  col-sm-offset-3 form">
+      <form onsubmit="return searchOccupations();">
+
+        <div class="form-group">
+          <label for="occupationSearchString">Search for occupation: </label>
+          <input class="form-control" id="occupationSearchString" type="text"/>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Search occupations"/>
+        </div>
+
+      </form>
+      <div class="form-group">
+
+        <textarea class="form-control" readonly="true" id="occupationSearchResult" rows="10" cols="120"></textarea>
+      </div>
+
+      <!--<button type="button" class="btn btn-danger" id="toggle-disabled">Disable Menu</button>-->
+    </div>
+    <div class="col-sm-12">
+      <ul id="taggedOccupationsList"></ul>
+    </div>
+  </div>
+</div>
+
+<div id="ajaxOverlay" class="overlay">
+  <div class="overlayBox" id="ajaxMessageBox"></div>
+</div>
+<div style="display: none;" id="ajaxDone">
+  <div id="ajaxDoneMessage"></div>
+  <button id="ajaxCloseButton" onclick="closeOverlay();">OK</button>
+</div>
+
+
+<script th:inline="javascript">
+  /*<![CDATA[*/
+  String.prototype.startsWith = function (s) {
+    return this.indexOf(s) == 0;
+  };
+  String.prototype.capitalizeFirstLetter = function () {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+  };
+  //@formatter:off
+var serviceApiUrl = [[${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).serviceApiUrl}]];
+var authorizationHeaderValue = [[${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).authorizationHeaderValue}]];
+var language = [[${language}]];
+var changeLanguageUrl = [[@{/changeLanguage?language=}]];
+//@formatter:on
+  var annotationIdCounter = 0;
+
+  function closeOverlay() {
+    $("#ajaxOverlay").hide();
+  }
+
+  function changeLanguage(newLanguage) {
+    language = newLanguage;
+    $.ajax({url: changeLanguageUrl + language, type: 'get'});
+  }
+
+  var menuEnabled = true;
+  $(function () {
+    $('#semicTab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show')
+    });
+
+    $("#documentContent").find('[semic-annotation-type]').each(function () {
+      var fullAnnotationId = $(this).attr("id");
+      addItem(fullAnnotationId, $(this).attr("semic-annotation-type"), $(this).html());
+      var thisId = parseInt(fullAnnotationId.substr(11));
+      if (thisId > annotationIdCounter) annotationIdCounter = thisId;
+    });
+
+    rangy.init();
+    initContextMenu();
+
+    $("#uploadData").click(function (e) {
+      $("#ajaxMessageBox").html("Uploading data...");
+      $("#ajaxOverlay").show();
+
+      var html = $("#documentContent").html();
+      $.ajax(
+              {
+                url: "#",
+                type: 'post',
+                data: html,
+                contentType: 'text/html',
+                success: function () {
+                  $("#ajaxDoneMessage").html("Upload data done");
+                  $("#ajaxMessageBox").html($("#ajaxDone").html());
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                  $("#ajaxDoneMessage").html("Upload data failed: " + errorThrown);
+                  $("#ajaxMessageBox").html($("#ajaxDone").html());
+                }
+              });
+
+    });
+  });
+
+  var searchRequest;
+  function searchSkills() {
+    return searchConcepts($("#skillSearchString").val(), $("#skillSearchResult"), "skill");
+  }
+
+  function searchOccupations() {
+    return searchConcepts($("#occupationSearchString").val(), $("#occupationSearchResult"), "occupation");
+  }
+
+  function searchConcepts(searchString, debugField, type) {
+    if (searchRequest && searchRequest.readyState != 4) searchRequest.abort();
+
+    debugField.val("searching...");
+    searchRequest = $.ajax(
+            {
+              url: serviceApiUrl + "search;type=http%3A%2F%2Fdata.europa.eu%2Fesco%2Fmodel%23" + type.capitalizeFirstLetter() + ";language=" + language + ";view=list;size=20;text=" + searchString,
+              type: 'get',
+              dataType: 'json',
+              beforeSend: function (xhr) {
+                if (authorizationHeaderValue) xhr.setRequestHeader("Authorization", authorizationHeaderValue);
+              },
+              success: function (data) {
+                currentData[type] = data;
+                searchSuccess(data, debugField);
+              },
+              error: function (data) {
+                currentData[type] = null;
+                debugField.val("Search error: " + data);
+              }
+            });
+    return false;
+  }
+
+  function getDateString() {
+    var now = new Date();
+    var result = "" + now.getFullYear();
+    if (now.getMonth() < 9) result += "0";
+    result += (now.getMonth() + 1);
+    if (now.getDay() < 10) result += "0";
+    result += now.getDay() + "-";
+    if (now.getHours() < 10) result += "0";
+    result += now.getHours();
+    if (now.getMinutes() < 10) result += "0";
+    result += now.getMinutes();
+    if (now.getSeconds() < 10) result += "0";
+    result += now.getSeconds() + "-";
+    if (now.getMilliseconds() < 100) result += "0";
+    if (now.getMilliseconds() < 10) result += "0";
+    result += now.getMilliseconds();
+    return result;
+  }
+  function searchSuccess(data, debugField) {
+    var value = "count: " + data.count + "\n";
+    value += "total: " + data.total + "\n";
+    for (var i = 0; i < data.concepts.length; i++) {
+      var prefLabel = data.concepts[i].concept.prefLabel[language];
+      if (!prefLabel) prefLabel = data.concepts[i].concept.prefLabel[0];
+      value += (i + 1) + ": " + data.concepts[i].concept.uri + " - " + prefLabel + "\n";
+    }
+    debugField.val(value);
+  }
+
+  var currentData = {};
+  function initContextMenu() {
+    $.contextMenu({
+      selector: '#documentContent',
+      callback: function (key, options) {
+        if (key == 'cancel') return;
+        surroundRange(key);
+      },
+      build: function (trigger, e) {
+//                      var skillItems = {};
+//                      if (currentData && currentData.count) {
+//                        var oneItem;
+//                        for (var i = 0; i < currentData.concepts.length; i++) {
+//                          oneItem = {};
+//                          oneItem["name"] = currentData.concepts[i].concept.prefLabel['en'];
+//                          skillItems[currentData.concepts[i].concept.uri] = oneItem;
+//                        }
+//                      }
+//                      else {
+//                        skillItems = { "cancel": {name: "No data loaded or found", icon: "quit"} };
+//                      }
+
+        return {
+          "items": {
+            "dc_description": {name: "dc:description", icon: "edit"},
+            "sep1": "---------",
+            "skill": {name: "Annotate as skill", icon: "edit"},
+            "occupation": {name: "Annotate as occupation", icon: "edit"},
+
+//                          "skills": {
+//                            "name": "Skill",
+//                            "items": skillItems
+//                          },
+            "sep2": "---------",
+            "cancel": {name: "Cancel", icon: "quit"}
+          }
+        };
+      }
+
+    });
+
+  }
+
+  function surroundRange(uriOrKey) {
+    var selection = rangy.getSelection();
+    var range = selection.rangeCount ? selection.getRangeAt(0) : null;
+    if (!range) return;
+
+
+    var newElement = document.createElement("a");
+    newElement.setAttribute("target", "escoLink");
+    var addItemNeeded = false;
+    if (uriOrKey == "dc_description") {
+      newElement.setAttribute("property", "http://purl.org/dc/terms/description");
+      newElement.style.backgroundColor = "yellow";
+    }
+    else if (uriOrKey == "skill") {
+      newElement.style.backgroundColor = "#c90209";
+      addItemNeeded = true;
+    }
+    else if (uriOrKey == "occupation") {
+      newElement.style.backgroundColor = "#78c80a";
+      addItemNeeded = true;
+    }
+    else {
+      return;
+    }
+
+    if (range.canSurroundContents(newElement)) {
+      if (addItemNeeded) {
+        annotationIdCounter++;
+        newElement.setAttribute("id", "annotation_" + annotationIdCounter);
+        newElement.setAttribute("semic-annotation-type", uriOrKey);
+      }
+      range.surroundContents(newElement);
+
+      if (addItemNeeded) {
+        addItem("annotation_" + annotationIdCounter, uriOrKey, $(newElement).html());
+      }
+
+    }
+    else {
+      alert("Unable to surround range because range partially selects a non-text node. See DOM4 spec for more information.");
+    }
+  }
+
+  var i;
+  function addItem(annotationId, type, content) {
+    var newItem = document.createElement("li");
+    newItem.setAttribute("semic-id", annotationId);
+    $(newItem).html(content);
+    var typeIsSkill = (type == "skill");
+    $(typeIsSkill ? "#taggedSkillsList" : "#taggedOccupationsList").append(newItem);
+    var semicConcepts = typeIsSkill ? semicSkills : semicOccupations;
+
+    $.contextMenu({
+      selector: "[semic-id='" + annotationId + "']",
+      callback: function (key, options) {
+
+        if (key.startsWith('cancel')) return;
+
+        newItem.remove();
+        if (key == 'createNew') {
+          assignAnnotatedText(createNewSemicUrl(type), null, annotationId, type, content);
+        }
+        else if (key.slice(0, 5) == "ISCO_") {
+          assignAnnotatedText(iscoUris[key].esco, iscoUris[key].isco, annotationId, type, null);
+        }
+        else {
+          assignAnnotatedText(key, null, annotationId, type, null);
+        }
+      },
+      build: function (trigger, e) {
+        var conceptData = currentData[type];
+        var conceptItems = {};
+        if (conceptData && conceptData.count) {
+          var oneItem;
+          for (i = 0; i < conceptData.concepts.length; i++) {
+            oneItem = {};
+            oneItem["name"] = conceptData.concepts[i].concept.prefLabel[language];
+            if (!oneItem["name"]) oneItem["name"] = conceptData.concepts[i].concept.prefLabel[0];
+
+
+            if (typeIsSkill) {
+              conceptItems[conceptData.concepts[i].concept.uri] = oneItem;
+            }
+            else {
+              oneItem = buildOccupationMenuItem(oneItem, conceptData.concepts[i].concept);
+              conceptItems["SUB_" + conceptData.concepts[i].concept.uri] = oneItem;
+            }
+          }
+        }
+        else {
+          conceptItems = {"cancelItems": {name: "No data loaded or found", icon: "quit"}};
+        }
+        var semicConceptItems = {};
+        if (!semicConcepts || semicConcepts.length == 0) {
+          semicConceptItems = {"cancelSemic": {name: "No semic concepts found", icon: "quit"}};
+        }
+        else {
+          for (i = 0; i < semicConcepts.length; i++) {
+            var oneSemicItem = {};
+            oneSemicItem["name"] = semicConcepts[i].label;
+            semicConceptItems[semicConcepts[i].uri] = oneSemicItem;
+          }
+        }
+
+        return {
+          "items": {
+            "escoConcepts": {
+              "name": "ESCO concepts",
+              "items": conceptItems
+            },
+            "semicConcepts": {
+              "name": "Semic concepts",
+              "items": semicConceptItems
+            },
+            "sep1": "---------",
+            "createNew": {name: "Create new semic concept", icon: "add"},
+            "sep2": "---------",
+            "cancel": {name: "Cancel", icon: "quit"}
+          }
+        };
+      }
+    });
+  }
+
+  var iscoUris = {};
+  function buildOccupationMenuItem(oneItem, concept) {
+    var iscoItems = {};
+    iscoItems[concept.uri] = {name: "Just add ESCO no ISCO"};
+
+    var memberOfIscoGroup = concept.memberOfIscoGroup;
+    if (memberOfIscoGroup && memberOfIscoGroup.length > 0) {
+      iscoItems["sepISCO"] = "---------";
+      for (var i = 0; i < memberOfIscoGroup.length; i++) {
+        var label = memberOfIscoGroup[i].prefLabel[language];
+        if (!label) label = memberOfIscoGroup[i].prefLabel[0];
+
+        var iscoUriId = "ISCO_" + memberOfIscoGroup[i].uri + concept.uri;
+        iscoUris[iscoUriId] = {isco: memberOfIscoGroup[i].uri, esco: concept.uri};
+        iscoItems[iscoUriId] = {name: "ISCO - " + label, isco: memberOfIscoGroup[i].uri, esco: concept.uri};
+      }
+    }
+//    else {
+//      iscoItems["noIscoItems_" + concept.uri] = {"noIscoItems": {name: "No ISCO concepts found", icon: "quit"}};
+//    }
+    oneItem["items"] = iscoItems;
+    return oneItem;
+  }
+
+  //@formatter:off
+  var namespace = [[${T(eu.esco.demo.jobcvmatching.root.SemicRdfModel).namespace}]];
+  var propertyHasSkill = [[${T(eu.esco.demo.jobcvmatching.root.SemicRdfModel).propertyHasSkill_toUseForAdd}]];
+  var propertyHasOccupation = [[${T(eu.esco.demo.jobcvmatching.root.SemicRdfModel).propertyHasOccupation_toUseForAdd}]];
+  var propertyHasIsco = [[${T(eu.esco.demo.jobcvmatching.root.SemicRdfModel).propertyHasIsco}]];
+  var documentUri = [[${uri}]];
+  //@formatter:on
+
+  function createNewSemicUrl(type) {
+    return namespace + "/" + type + "/" + getDateString();
+  }
+
+  function assignAnnotatedText(uri, iscoUri, annotationId, type, content) {
+    var wrappingElement = $("#" + annotationId);
+    wrappingElement.removeAttr("id");
+    wrappingElement.removeAttr("semic-annotation-type");
+
+    wrappingElement.attr("rel", type == "skill" ? propertyHasSkill : propertyHasOccupation);
+    wrappingElement.attr("resource", uri);
+    wrappingElement.attr("href", uri);
+
+    if (iscoUri) {
+      var iscoElement = $(document.createElement("span"));
+      iscoElement.attr("about", documentUri);
+      iscoElement.attr("rel", propertyHasIsco);
+      iscoElement.attr("resource", iscoUri);
+      iscoElement.hide();
+      wrappingElement.append(iscoElement);
+    }
+
+    if (content) {
+      var contentInfo = $(document.createElement("span"));
+      contentInfo.attr("about", uri);
+      contentInfo.attr("property", "http://www.tenforce.com/esco/java#fallbackLabel");
+      contentInfo.attr("content", content);
+      contentInfo.attr("typeof", "http://data.europa.eu/esco/model#" + type.capitalizeFirstLetter());
+      contentInfo.hide();
+      wrappingElement.append(contentInfo);
+    }
+
+  }
+
+  /*]]>*/
+</script>
+<script th:utext="'var semicSkills = ' + ${semicSkills} + ';'"></script>
+<script th:utext="'var semicOccupations = ' + ${semicOccupations} + ';'"></script>
+</body>
+</html>

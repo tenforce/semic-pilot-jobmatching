@@ -1,0 +1,133 @@
+allprojects {
+
+  apply plugin: 'java'
+ 
+
+  sourceCompatibility = 1.7
+  repositories {
+    jcenter()
+    mavenCentral()
+    mavenLocal()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+  }
+}
+
+buildscript {
+  repositories {
+    jcenter()
+    maven { url "http://repo.spring.io/snapshot" }
+    maven { url "http://repo.spring.io/milestone" }
+  }
+  dependencies {
+    classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE")
+  }
+}
+
+subprojects {
+
+}
+
+project('esco-job-cv-matching') {
+//  apply plugin: 'java'
+//  apply plugin: 'eclipse'
+  apply plugin: 'spring-boot'
+//  apply plugin: 'war'
+
+  jar {
+    baseName = 'esco-job-cv-matching'
+    version = '0.0.1-SNAPSHOT'
+  }
+
+  springBoot {
+    mainClass = "eu.esco.demo.jobcvmatching.Application"
+  }
+
+  dependencies {
+    compile("javax.inject:javax.inject:1")
+//    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+//    compile("org.springframework.boot:spring-boot-starter-web")
+//        providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+
+    compile("com.google.guava:guava:12.0")
+    compile("net.sourceforge.collections:collections-generic:4.01")
+    compile("org.apache.jena:jena-core:2.10.0") {
+      exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+      exclude group: 'log4j', module: 'log4j'
+    }
+    compile("eu.esco-xl:tenforce-common-semantic:03.60-ESCO-XL")
+    compile("eu.esco-xl:tenforce-semantic:03.60-ESCO-XL")
+    compile("eu.esco-xl:tenforce-spring-core:03.60-ESCO-XL")
+    compile("org.openrdf.sesame:sesame-repository-manager:2.7.11")
+    compile("org.apache.any23:apache-any23-core:1.1") {
+      exclude group: 'org.apache.any23', module: 'apache-any23-csvutils' //TODO: fix this
+      exclude group: 'org.apache.commons', module: 'commons-csv' //TODO: fix this
+    }
+    compile("org.ccil.cowan.tagsoup:tagsoup:1.2.1")
+    testCompile('org.apache.commons:commons-csv:1.1')
+    testCompile('com.oracle:ojdbc6:11.2.0.3')
+
+
+//    testCompile("org.springframework.boot:spring-boot-starter-test")
+  }
+
+}
+
+project('afepa-demo') {
+  apply plugin: 'spring-boot'
+  apply plugin: 'war'
+
+  war {
+    baseName = 'afepa-demo'
+  }
+
+  springBoot {
+    mainClass = "eu.esco.afepa.demo.Application"
+  }
+
+  configurations {
+    providedRuntime
+  }
+
+  dependencies {
+    compile("javax.inject:javax.inject:1")
+//    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+  }
+}
+
+
+project('semic-pilot') {
+  apply plugin: 'spring-boot'
+  apply plugin: 'war'
+
+  jar {
+    baseName = 'semic-pilot'
+    version = '0.0.1-SNAPSHOT'
+  }
+
+  war {
+    baseName = 'semic-pilot'
+  }
+
+  configurations {
+    providedRuntime
+  }
+  springBoot {
+    mainClass = "eu.esco.semic.pilot.Application"
+  }
+
+  dependencies {
+    compile("javax.inject:javax.inject:1")
+    compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+    compile("org.apache.commons:commons-lang3:3.1")
+    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
+
+    compile("com.google.guava:guava:12.0")
+    compile("net.sourceforge.collections:collections-generic:4.01")
+  }
+
+}

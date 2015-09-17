@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>Skill-based CV/JV matching</title>
+  <link th:href="@{/resources/css/animate.css}" href="css/animate.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/bootstrap/css/bootstrap.css}" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/css/reset.css}" href="css/reset.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/css/style.css}" href="css/style.css" media="all" rel="stylesheet" type="text/css"/>
+  <link th:href="@{/resources/font-awesome/css/font-awesome.min.css}" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
+  <link href="http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,400,300,700&amp;subset=latin,cyrillic-ext" media="all" rel="stylesheet" type="text/css"/>
+
+  <script type="text/javascript" th:src="@{/resources/jquery-1.11.3.min.js}" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+  <script type="text/javascript" th:src="@{/resources/bootstrap/js/bootstrap.js}" src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+<header>
+  <div class="esco_logo">
+  </div>
+  <div class="btn-group" role="group" aria-label="...">
+    <button id="goV0Button" type="button" class="btn btn-default" th:class="|btn btn-default ${isV1 ? '' : 'active'}|">ESCO v0</button>
+    <button id="goV1Button" type="button" class="btn btn-default active" th:class="|btn btn-default ${isV1 ? 'active' : ''}|">ESCO v1</button>
+  </div>
+</header>
+
+<form action="" id="changeVersionForm">
+  <input type="hidden" name="matchingType" th:value="${matchingType}"/>
+  <input type="hidden" name="type" th:value="${type}"/>
+  <input type="hidden" name="uri" th:value="${jv.uri}"/>
+  <input type="hidden" name="version" th:value="${isV1 ? 'v0' : 'v1'}"/>
+</form>
+
+<form action="" id="changeMatchingTypeForm">
+  <input type="hidden" name="matchingType" id="matchingTypeInputField"/>
+  <input type="hidden" name="type" th:value="${type}"/>
+  <input type="hidden" name="uri" th:value="${jv.uri}"/>
+  <input type="hidden" name="version" th:value="${isV1 ? 'v1' : 'v0'}"/>
+</form>
+
+<div class="control animated slideInDown">
+
+  <div class="your_document">
+    Matched CVs for <span th:text='|"${jv.label}"|'>"Franchisenemer bij Au Croquant Bakkerij at Au Croquant Bakkerij in Brussel , Bruxelles - Job | LinkedIn"</span>
+  </div>
+  <div class="block_title">Matching type</div>
+  <div class="btn-group btn-group" role="group" aria-label="...">
+    <button id="implicitButton" type="button" class="btn btn-default">Implicit</button>
+    <button id="explicitButton" type="button" class="btn btn-default">Explicit</button>
+    <button id="combinedButton" type="button" class="btn btn-default">Combined</button>
+  </div>
+</div>
+
+<div class="matching">
+  <div class="btn-group" role="group" aria-label="...">
+    <button id="originalViewButton" type="button" class="btn btn-default active">Original document</button>
+    <button id="skillViewButton" type="button" class="btn btn-default">Skills view</button>
+  </div>
+
+  <form action="">
+    <input type="hidden" name="matchingType" th:value="${matchingType}"/>
+    <input type="hidden" name="type" th:value="${type}"/>
+    <input type="hidden" name="uri" th:value="${jv.uri}"/>
+    <input type="hidden" name="version" th:value="${isV1 ? 'v0' : 'v1'}"/>
+    <select name="language" id="languageSelector" onchange="$(this).parent().submit()" class="form-control">
+      <option th:each="langInfoEntry : ${T(eu.esco.demo.jobcvmatching.root.HardcodedConfiguration).languages}"
+              th:value="${langInfoEntry.key}" th:text="${langInfoEntry.value}" th:selected="${langInfoEntry.key == language} ">Some language
+      </option>
+    </select>
+  </form>
+
+  <div class="original animated fadeIn">
+    <div class="document_title">Your vacancy</div>
+
+
+    <div class="original_document" esco-document-type="original">
+      <div class="description-section">
+        <h3 class="sub-header">Job description</h3>
+        <div class="rich-text" itemprop="description">
+          <h3 th:text="${jv.label}">Job title</h3>
+          <p th:text="${jv.description}">Job description</p>
+        </div>
+      </div>
+      <div class="skills-section">
+        <h3 class="sub-header">Hiring Organization</h3>
+        <div class="rich-text" th:text="${jv.hiringOrganizationName}">Au Croquant Bakkerij</div>
+
+        <h3 class="sub-header">Employment Type</h3>
+        <div class="rich-text" th:text="${jv.employmentType}">fulltime</div>
+
+        <h3 class="sub-header">Experience Level</h3>
+        <div class="rich-text" th:text="${jv.experienceLevel}">entryLevel</div>
+
+        <h3 class="sub-header">Geoname</h3>
+        <div><a th:if="${jv.geonameUri != null}" th:href="${jv.geonameUri}" th:text="${jv.geonameLabel}" target="_blank" href="http://sws.geonames.org/2800866/">Bruxelles Jette</a></div>
+
+        <h3 class="sub-header">Occupational Category</h3>
+        <div class="rich-text" th:text="${jv.occupationalCategory}">Business Development, General Business, Distribution</div>
+
+        <h3 class="sub-header">Nace codes (ESCO)</h3>
+        <div class="rich-text">
+          <ul>
+            <li th:if="${#lists.isEmpty(jv.naces)}">No nace codes found in the CV</li>
+            <li th:text="${nace.label}" th:each="nace : ${jv.naces}">some nace stuff</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="original_document" esco-document-type="skillView" style="display: none;">
+      <table class="table table-small table-striped">
+        <tbody>
+        <tr>
+          <td align="left" valign="top">URL</td>
+          <td th:text="${jv.uri}">https://www.linkedin.com/jobs2/view/12381940</td>
+        </tr>
+        <tr>
+          <td align="left" valign="top">Direct v0 skills (ESCO)</td>
+          <td>
+            <ul>
+              <li th:if="${#lists.isEmpty(jv.directSkills)}" id="directV1SkillsNone">No direct v0 ESCO skills found for this JV</li>
+              <li th:each="skill : ${jv.directSkills}" th:text="${skill.label}">Direct v0 skill label here</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top">Direct v1 skills (ESCO)</td>
+          <td>
+            <ul>
+              <li th:if="${#lists.isEmpty(jv.directV1Skills)}" id="directV1SkillsNone">No direct v1 ESCO skills found for this JV</li>
+              <li th:each="skill : ${jv.directV1Skills}" th:text="${skill.label}">Direct v1 skill label here</li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top">Occupations v0 (ESCO)</td>
+          <td>
+            <ul>
+              <li th:if="${#lists.isEmpty(jv.occupations)}">No ESCO v0 occupations defined for this JV</li>
+              <li th:each="occupation : ${jv.occupations}">
+                <p th:text="${occupation.label}" onclick="$(this).parent().children('ul').toggle()">Occupation label here</p>
+                <ul style="margin-left: 20px;display: none;">
+                  <li th:if="${#lists.isEmpty(occupation.skills)}">No ESCO skills defined for this ESCO occupation</li>
+                  <li th:text="${skill.label}" th:each="skill : ${occupation.skills}">Skill label here...</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        <tr>
+          <td align="left" valign="top">Occupations v1 (ESCO)</td>
+          <td>
+            <ul>
+              <li th:if="${#lists.isEmpty(jv.occupationsV1)}">No ESCO v1 occupations defined for this JV</li>
+              <li th:each="occupation : ${jv.occupationsV1}">
+                <p th:text="${occupation.label}" onclick="$(this).parent().children('ul').toggle()">Occupation label here</p>
+                <ul style="margin-left: 20px;display: none;">
+                  <li th:if="${#lists.isEmpty(occupation.skills)}">No ESCO skills defined for this ESCO occupation</li>
+                  <li th:text="${skill.label}" th:each="skill : ${occupation.skills}">Skill label here...</li>
+                </ul>
+              </li>
+            </ul>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="matching_results animated fadeIn" id="slider">
+    <div class="document_title">Matched CV</div>
+    <div class="" id="carousel-bounding-box">
+      <div id="results" class="carousel slide">
+        <div class="carousel-inner">
+
+          <div th:each="cv, status : ${cvs}" th:class="|item ${cv.htmlClass} ${isV1 ? cv.scoreV1Class :  cv.scoreV0Class}|" th:id="|carouselDataItem-${status.index}|" th:attr="data-slide-number=${status.index}">
+            <div class="rating" th:text="|${isV1 ? cv.scoreV1 : cv.scoreV0}%|">98%</div>
+
+            <div esco-document-type="original">
+              <div class="description-section">
+                <h3 class="sub-header">CV description</h3>
+
+                <div class="rich-text" itemprop="description">
+                  No description found for the CV.
+                </div>
+
+              </div>
+              <h3 class="sub-header">CV ID</h3>
+              <div class="rich-text" th:text="${cv.uri}">someId</div>
+              <h3 class="sub-header">Given name</h3>
+              <div class="rich-text" th:text="${cv.givenName}">givenName</div>
+              <div class="skills-section">
+                <h3 class="sub-header">Skills (v0)</h3>
+
+                <div class="rich-text">
+                  <ul>
+                    <li th:if="${#lists.isEmpty(cv.skills)}">No v0 skills found in the CV</li>
+                    <li th:each="skill : ${cv.skills}" th:text="${skill.label}">Skill v0</li>
+                  </ul>
+                </div>
+
+                <h3 class="sub-header">Experience (v0)</h3>
+
+                <div class="rich-text">
+                  <ul>
+                    <li th:if="${#lists.isEmpty(cv.occupations)}">No v0 experience found in the CV</li>
+                    <li th:each="occupation : ${cv.occupations}" th:text="${occupation.label}">occupation v0</li>
+                  </ul>
+                </div>
+
+                <h3 class="sub-header">Skills (v1)</h3>
+
+                <div class="rich-text">
+                  <ul>
+                    <li th:if="${#lists.isEmpty(cv.skillsV1)}">No v1 skills found in the CV</li>
+                    <li th:each="skill : ${cv.skillsV1}" th:text="${skill.label}">skill v1</li>
+                  </ul>
+                </div>
+
+                <h3 class="sub-header">Experience (v1)</h3>
+
+                <div class="rich-text">
+                  <ul>
+                    <li th:if="${#lists.isEmpty(cv.occupationsV1)}">No v1 experience found in the CV</li>
+                    <li th:each="occupation : ${cv.occupationsV1}" th:text="${occupation.label}">occupation v0</li>
+                  </ul>
+                </div>
+
+
+              </div>
+            </div>
+            <div esco-document-type="skillView" style="display: none;">
+              <h3>Matching skills</h3>
+
+              <div th:if="${isV1}" class="badge" th:each="skill : ${cv.matchingSkillsV1}" th:text="${skill.label}">Customer services</div>
+              <div th:if="${!isV1}" class="badge" th:each="skill : ${cv.matchingSkills}" th:text="${skill.label}">Customer services</div>
+
+              <div class="missing_skills">
+                <h3>Missing skills</h3>
+
+                <div th:if="${isV1}" class="badge" th:each="skill : ${cv.missingSkillsV1}" th:text="${skill.label}">Customer services</div>
+                <div th:if="${!isV1}" class="badge" th:each="skill : ${cv.missingSkills}" th:text="${skill.label}">Customer services</div>
+              </div>
+
+              <div class="additional_skills">
+                <h3>Additional skills</h3>
+
+                <div th:if="${isV1}" class="badge" th:each="skill : ${cv.additionalSkillsV1}" th:text="${skill.label}">Customer services</div>
+                <div th:if="${!isV1}" class="badge" th:each="skill : ${cv.additionalSkills}" th:text="${skill.label}">Customer services</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!-- main slider carousel nav controls -->
+        <a class="results_control left" href="#results" data-slide="prev">‹</a> <a class="results_control right" href="#results" data-slide="next">›</a></div>
+    </div>
+  </div>
+</div>
+<!--/main slider carousel-->
+<!-- thumb navigation carousel -->
+<div class="results animated slideInUp" id="results_thumbs">
+  <div class="document_title">Matched CVs</div>
+  <!-- thumb navigation carousel items -->
+  <ul>
+    <li th:each="cv, status : ${cvs}" th:id="|carousel-selector-${status.index}|" id="carousel-selector-0" th:class="|${cv.htmlClass} ${isV1 ? cv.scoreV1Class :  cv.scoreV0Class}|" class="selected linkedin carousel-1">
+      <div class="name" th:text="${cv.givenName}">givenName</div>
+      <div class="rating" th:text="|${isV1 ? cv.scoreV1 : cv.scoreV0}%|">98%</div>
+    </li>
+  </ul>
+</div>
+
+
+<footer>
+  <div class="linkedin_logo">
+  </div>
+  <div class="vdab_logo">
+  </div>
+  <div class="eures_logo">
+  </div>
+</footer>
+
+
+<script>
+  /*<![CDATA[*/
+  $(function () {
+    $("#carousel-selector-0").addClass("selected");
+    $("#carouselDataItem-0").addClass("active");
+
+    var resultField = $('#results');
+    resultField.carousel({pause: true, interval: false});
+
+    // handles the carousel thumbnails
+    $('[id^=carousel-selector-]').click(function () {
+      var id_selector = $(this).attr("id");
+      var id = id_selector.substr(id_selector.length - 1);
+      id = parseInt(id);
+      $('#results').carousel(id);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $(this).addClass('selected');
+    });
+
+    // when the carousel slides, auto update
+    resultField.on('slid.bs.carousel', function (e) {
+      var id = $('.item.active').data('slide-number');
+      id = parseInt(id);
+      $('[id^=carousel-selector-]').removeClass('selected');
+      $('[id=carousel-selector-' + id + ']').addClass('selected');
+    });
+
+    $("#originalViewButton").click(function () {
+      $("#originalViewButton").addClass("active");
+      $("#skillViewButton").removeClass("active");
+      $("div[esco-document-type='original']").show();
+      $("div[esco-document-type='skillView']").hide();
+    });
+    $("#skillViewButton").click(function () {
+      $("#originalViewButton").removeClass("active");
+      $("#skillViewButton").addClass("active");
+      $("div[esco-document-type='original']").hide();
+      $("div[esco-document-type='skillView']").show();
+    });
+
+    $("#combinedButton").click({newType: "combined"}, changeMatchingType);
+    $("#explicitButton").click({newType: "explicit"}, changeMatchingType);
+    $("#implicitButton").click({newType: "implicit"}, changeMatchingType);
+  });
+
+  function changeMatchingType(event) {
+    $("#matchingTypeInputField").val(event.data.newType);
+    $("#changeMatchingTypeForm").submit();
+  }
+  /*]]>*/
+</script>
+
+<script th:if="${isV1}">
+  /*<![CDATA[*/
+  $(function () {
+    $("#goV0Button").click(function () {
+      $("#changeVersionForm").submit();
+    });
+  });
+  /*]]>*/
+</script>
+<script th:if="${!isV1}">
+  /*<![CDATA[*/
+  $(function () {
+    $("#goV1Button").click(function () {
+      $("#changeVersionForm").submit();
+    });
+  });
+  /*]]>*/
+</script>
+<script th:if="${matchingType == 'combined'}">
+  /*<![CDATA[*/
+  $("#combinedButton").addClass("active");
+  /*]]>*/
+</script>
+<script th:if="${matchingType == 'explicit'}">
+  /*<![CDATA[*/
+  $("#explicitButton").addClass("active");
+  /*]]>*/
+</script>
+<script th:if="${matchingType == 'implicit'}">
+  /*<![CDATA[*/
+  $("#implicitButton").addClass("active");
+  /*]]>*/
+</script>
+</body>
+</html>

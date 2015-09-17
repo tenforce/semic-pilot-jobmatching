@@ -1,0 +1,741 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Skill-based CV/JV matching</title>
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,400,300,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+
+
+
+<header>
+	<div class="esco_logo">
+    </div>
+    <div class="btn-group" role="group" aria-label="...">
+      <button type="button" class="btn btn-default active">ESCO v0</button>
+      <button type="button" class="btn btn-default">ESCO v1</button>
+    </div>
+</header>
+
+<div class="control animated slideInDown">
+
+	<div class="your_document">
+    Statistics on skills shortage
+    </div>
+    <div class="block_title">Display as</div>
+    <div class="btn-group btn-group" role="group" aria-label="...">
+        <button type="button" class="btn btn-default active">As hierarchy</button>
+        <button type="button" class="btn btn-default">As a cloud</button>
+    </div>
+
+</div>
+
+<div class="statistics heat">
+
+<div class="level JV_one one">Job-specific skills/competences <span class="CV_count">7</span></div>
+<div class="level"><div class="level JV_one one">Metal processing and mechanical engineering <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Mechanical repair work <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Architecture and building <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Laboratories planning <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Maintenance work (joinery) <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Damage investigations <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Health <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Care and nursing <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Physiology <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">General physiotherapy <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Oncology (medicine) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Nutrition counseling <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Drugs dispensing <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Microbiology (biomedical analysis) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical industry <span class="CV_count">4</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Patient administration <span class="CV_count">2</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmacy <span class="CV_count">5</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical chemistry <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Patient observation <span class="CV_count">4</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical processing <span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health education methods <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health care issues <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medicine <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">General nursing <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical laboratory <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Hematology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical technology <span class="CV_count">4</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pulmonology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical pathology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceuticals and health service products <span class="CV_count">3</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health care (professional guidance) <span class="CV_count">4</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medical documentation <span class="CV_count">2</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Diet and nutrition treatment <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Emergency care (nursing) <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Radiotherapy <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Nutrition <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Business and administration <span class="CV_count">6</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Occupational injuries (investigations) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">E-commerce (business development) <span class="CV_count">23</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Budget design <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Customer relationship management <span class="CV_count">68</span><span class="JV_count">18</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Financial planning <span class="CV_count">13</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Logistics <span class="CV_count">32</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Staff development <span class="CV_count">25</span><span class="JV_count">13</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (company visits) <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Sales support (administrative) <span class="CV_count">41</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Wage negotiations <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Sales management <span class="CV_count">83</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Stockroom management <span class="CV_count">19</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Media strategy <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Handling complaints <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Marketing (market communication) <span class="CV_count">206</span><span class="JV_count">7</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Ticket sale <span class="CV_count">14</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Real estate brokering <span class="CV_count">7</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Office premises (maintenance) <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Market surveys (result analysis) <span class="CV_count">38</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Purchasing and logistics <span class="CV_count">24</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process monitoring <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">International organisations <span class="CV_count">57</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Market analysis <span class="CV_count">117</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business analysis <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Bakery and confectionery products <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Press contacts <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Selling experience (exhibition sales) <span class="CV_count">22</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Preparation of annual accounts <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality reporting <span class="CV_count">7</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Labelling <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (direct sales to consumer) <span class="CV_count">90</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Financial services <span class="CV_count">20</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Accounting responsibility <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two four">Customer services <span class="CV_count">151</span><span class="JV_count">11</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Advertisement production (wording) <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial analysis <span class="CV_count">23</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality auditing <span class="CV_count">10</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Estimation and follow-up work <span class="CV_count">5</span><span class="JV_count">14</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Project administration <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Budget responsibility <span class="CV_count">24</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two three">Management / organisation <span class="CV_count">224</span><span class="JV_count">11</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Quality management (ISO 9000 series) <span class="CV_count">17</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Staff administration <span class="CV_count">38</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business management (business sector) <span class="CV_count">33</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial advice <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Product development <span class="CV_count">9</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Invoicing <span class="CV_count">13</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Personnel recruitment <span class="CV_count">19</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Marketing  (public relations) <span class="CV_count">137</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Alarm and safety products <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Staff planning <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Project and internal reporting <span class="CV_count">33</span><span class="JV_count">17</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Materials management <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two four">Project management <span class="CV_count">143</span><span class="JV_count">14</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Stock-keeping <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Web page management <span class="CV_count">33</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Material and production control <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Accounting / auditing <span class="CV_count">27</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Competitor monitoring <span class="CV_count">2</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Development work <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Organisational development <span class="CV_count">45</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Providing training for salespeople <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Quality control <span class="CV_count">4</span><span class="JV_count">12</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Risk management <span class="CV_count">14</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial reporting <span class="CV_count">13</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Business development <span class="CV_count">16</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Insurance services <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Event marketing <span class="CV_count">75</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Facilities management <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (telemarketing) <span class="CV_count">20</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Auditing <span class="CV_count">4</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Hotel management <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Advertising services <span class="CV_count">22</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Daily record keeping <span class="CV_count">7</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Maintenance planning (buildings) <span class="CV_count">8</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">External accounting <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Portfolio management <span class="CV_count">9</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Leadership development <span class="CV_count">30</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Payments <span class="CV_count">15</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Delivery monitoring <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality assurance <span class="CV_count">6</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Public relations <span class="CV_count">89</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Renovation planning (building management) <span class="CV_count">4</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Monthly reports <span class="CV_count">12</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Planning <span class="CV_count">12</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Conflict solving (human resources management) <span class="CV_count">32</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Quality (responsibility for) <span class="CV_count">20</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Operations management <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Staff responsibility <span class="CV_count">32</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy use guidance <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Manufacturing and processing of textiles, clothes, footwear, leather <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Inspection <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Social services <span class="CV_count">3</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Liasion duties <span class="CV_count">9</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Contact person services <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Social services and care <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Mathematics and statistics <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Data analysis <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Personal services <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Travel agency management <span class="CV_count">16</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Catering management <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Accommodation agency <span class="CV_count">7</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Supervising <span class="CV_count">17</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Training <span class="CV_count">35</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business travel sales <span class="CV_count">18</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Restaurant inspection <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Tourism and conference services <span class="CV_count">38</span><span class="JV_count">7</span></div></div></div>
+<div class="level"><div class="level JV_one one">Humanities <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Ethics <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Media and communication science <span class="CV_count">12</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Translations <span class="CV_count">96</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Agriculture, forestry and fishery <span class="CV_count">4</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Equipment technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Agriculture <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Fodder manufacturing industry <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Preventive animal health <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Electrical engineering </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Methods engineering <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Telecommunications <span class="CV_count">15</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process technology (engineering) <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Servicing (electronics) <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Performance and security testing <span class="CV_count">1</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process control <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level JV_one ">Transport services </div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Passenger transport <span class="CV_count">11</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Driving <span class="CV_count">53</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level JV_one one">Veterinary <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Animal protection <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Veterinary care <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Journalism and information <span class="CV_count">9</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Archiving <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Text editing <span class="CV_count">49</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Language check <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Technical documentation <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Scheduling experience (TV) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Telephone interviewing <span class="CV_count">10</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level JV_one one">Computing <span class="CV_count">31</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Web editing <span class="CV_count">29</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Java <span class="CV_count">34</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Systems analysis <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Cascading Style Sheets (CSS) <span class="CV_count">51</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Systems administration <span class="CV_count">7</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">HTML5 <span class="CV_count">54</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">SQL <span class="CV_count">26</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Java-script <span class="CV_count">32</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Applications programming <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">System testing <span class="CV_count">5</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">MS Office <span class="CV_count">230</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Excel spreadsheet <span class="CV_count">196</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Web programming <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Microsoft Word <span class="CV_count">324</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Web design <span class="CV_count">54</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Microsoft PowerPoint <span class="CV_count">267</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">User support (software) <span class="CV_count">13</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Graphics programs <span class="CV_count">18</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Research <span class="CV_count">58</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Security analysis (data security) <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Work experience abroad <span class="CV_count">10</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Microsoft Access (database administration) <span class="CV_count">43</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Test management (data systems) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Amadeus (travel reservation system) <span class="CV_count">24</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level JV_one ">Law </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medical law <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Commercial law <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Sales law <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Legal terminology <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Safety regulations <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Contract law <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Drafting of agreements and contracts <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Company ownership transfers <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Litigation <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Education <span class="CV_count">5</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Special teaching methods <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical pathology (teaching) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pedagogy <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Editorial adaptation of teaching aids <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Anatomy (teaching) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Education planning <span class="CV_count">17</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Arts <span class="CV_count">5</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Graphic design <span class="CV_count">41</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Editing (video production) <span class="CV_count">31</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Environmental protection <span class="CV_count">4</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Technical guidance <span class="CV_count">5</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy conservation <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Waste disposal technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy issues <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Security services <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Occupational safety and health <span class="CV_count">10</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Internal audit (safety regulations) <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Risk and safety analysis (work environment) <span class="CV_count">8</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level JV_one one">Life sciences <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Biochemistry <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Chemical-pharmaceutical documentation <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Microbiology <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Physical sciences </div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Laboratory analysis <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Chemical technology <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Analysis technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Automation technology <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Physics <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Immunochemical methods (biochemical/clinical analysis) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Manufacturing and processing materials </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Packaging <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level JV_one one">Transversal skills/competences <span class="CV_count">1</span></div>
+<div class="level"><div class="level JV_one one">Social skills and competences <span class="CV_count">25</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Leading others <span class="CV_count">40</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Build relationships <span class="CV_count">11</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Motivate staff and colleages <span class="CV_count">18</span><span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Exercise responsibility <span class="CV_count">6</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support colleagues <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Working with others <span class="CV_count">49</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Work as part of a team <span class="CV_count">55</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Collaborate on tasks <span class="CV_count">8</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Negotiate <span class="CV_count">13</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Propose options <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Language and communication <span class="CV_count">18</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Verbal communication <span class="CV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Spoken interaction <span class="CV_count">6</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Negotiating <span class="CV_count">23</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Spoken production <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Presentation techniques <span class="CV_count">21</span><span class="JV_count">3</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one ">Language </div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Mother tongue </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Mother tongue English <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Mother tongue French <span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Mother tongue Dutch <span class="CV_count">9</span><span class="JV_count">14</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Foreign language <span class="CV_count">15</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Foreign language German <span class="CV_count">7</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Foreign language Spanish <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_three five">Foreign language Dutch <span class="CV_count">6</span><span class="JV_count">22</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_five five">Foreign language English <span class="CV_count">12</span><span class="JV_count">47</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Foreign language English Writing <span class="JV_count">1</span></div></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_four five">Foreign language French <span class="CV_count">12</span><span class="JV_count">35</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Application of knowledge <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Numeracy and mathematics <span class="CV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Use mathematical tools and equipment </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use measuring equipment <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Process mathematical information for work <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Interpret data <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Gather data <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Information and communications <span class="CV_count">29</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Interact electronically </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Communicate on-line <span class="CV_count">3</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Create electronic content <span class="CV_count">4</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Edit electronic content <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Manage software <span class="CV_count">2</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use office software <span class="CV_count">26</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Manage electronic information </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use spreadsheets <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Health, safety and the working environment <span class="CV_count">10</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Implement organisational policies <span class="CV_count">4</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Monitor policy implementation <span class="CV_count">1</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support company plan <span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support company mission <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Thinking skills and competences <span class="CV_count">28</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Planning own work <span class="CV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Follow plan <span class="CV_count">7</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Monitor progress <span class="CV_count">3</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Critical thinking <span class="CV_count">18</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Explore issues </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Make judgements <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Examine evidence <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Check facts <span class="CV_count">11</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Creative and entrepreneurial thinking <span class="CV_count">61</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Generate new ideas <span class="CV_count">68</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Experiment <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Problem-solving <span class="CV_count">79</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Take action to solve the problem <span class="CV_count">47</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Evaluate success <span class="CV_count">3</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Coordinate actions <span class="CV_count">9</span><span class="JV_count">11</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Implement strategy <span class="CV_count">16</span><span class="JV_count">18</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Multi task <span class="CV_count">16</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Troubleshoot <span class="CV_count">5</span><span class="JV_count">11</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Plan for action <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Prioritise actions <span class="CV_count">4</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Set goals <span class="CV_count">2</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Devise strategy <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Attitudes and values at work <span class="CV_count">6</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one ">Attitudes </div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Demonstrate commitment <span class="CV_count">9</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Work independently <span class="CV_count">23</span><span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Persist <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Attend to detail <span class="CV_count">39</span><span class="JV_count">7</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Attend to quality <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Meet commitments <span class="CV_count">11</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Handle challenges <span class="CV_count">9</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Manage frustration <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Cope with pressure <span class="CV_count">22</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Values <span class="CV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Show respect <span class="CV_count">5</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Show consideration <span class="CV_count">25</span><span class="JV_count">2</span></div></div></div></div></div>
+
+
+</div>
+
+<div class="statistics cloud">
+
+<div class="level JV_one one">Job-specific skills/competences <span class="CV_count">7</span></div>
+<div class="level"><div class="level JV_one one">Metal processing and mechanical engineering <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Mechanical repair work <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Architecture and building <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Laboratories planning <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Maintenance work (joinery) <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Damage investigations <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Health <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Care and nursing <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Physiology <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">General physiotherapy <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Oncology (medicine) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Nutrition counseling <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Drugs dispensing <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Microbiology (biomedical analysis) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical industry <span class="CV_count">4</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Patient administration <span class="CV_count">2</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmacy <span class="CV_count">5</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical chemistry <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Patient observation <span class="CV_count">4</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical processing <span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health education methods <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health care issues <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medicine <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">General nursing <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical laboratory <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Hematology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceutical technology <span class="CV_count">4</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pulmonology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical pathology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pharmaceuticals and health service products <span class="CV_count">3</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Health care (professional guidance) <span class="CV_count">4</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medical documentation <span class="CV_count">2</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Diet and nutrition treatment <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Emergency care (nursing) <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Radiotherapy <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Nutrition <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Business and administration <span class="CV_count">6</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Occupational injuries (investigations) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">E-commerce (business development) <span class="CV_count">23</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Budget design <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Customer relationship management <span class="CV_count">68</span><span class="JV_count">18</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Financial planning <span class="CV_count">13</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Logistics <span class="CV_count">32</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Staff development <span class="CV_count">25</span><span class="JV_count">13</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (company visits) <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Sales support (administrative) <span class="CV_count">41</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Wage negotiations <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Sales management <span class="CV_count">83</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Stockroom management <span class="CV_count">19</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Media strategy <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Handling complaints <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Marketing (market communication) <span class="CV_count">206</span><span class="JV_count">7</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Ticket sale <span class="CV_count">14</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Real estate brokering <span class="CV_count">7</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Office premises (maintenance) <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Market surveys (result analysis) <span class="CV_count">38</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Purchasing and logistics <span class="CV_count">24</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process monitoring <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">International organisations <span class="CV_count">57</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Market analysis <span class="CV_count">117</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business analysis <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Bakery and confectionery products <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Press contacts <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Selling experience (exhibition sales) <span class="CV_count">22</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Preparation of annual accounts <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality reporting <span class="CV_count">7</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Labelling <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (direct sales to consumer) <span class="CV_count">90</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Financial services <span class="CV_count">20</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Accounting responsibility <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two four">Customer services <span class="CV_count">151</span><span class="JV_count">11</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Advertisement production (wording) <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial analysis <span class="CV_count">23</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality auditing <span class="CV_count">10</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Estimation and follow-up work <span class="CV_count">5</span><span class="JV_count">14</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Project administration <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Budget responsibility <span class="CV_count">24</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two three">Management / organisation <span class="CV_count">224</span><span class="JV_count">11</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Quality management (ISO 9000 series) <span class="CV_count">17</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Staff administration <span class="CV_count">38</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business management (business sector) <span class="CV_count">33</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial advice <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Product development <span class="CV_count">9</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Invoicing <span class="CV_count">13</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Personnel recruitment <span class="CV_count">19</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Marketing  (public relations) <span class="CV_count">137</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Alarm and safety products <span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Staff planning <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Project and internal reporting <span class="CV_count">33</span><span class="JV_count">17</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Materials management <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two four">Project management <span class="CV_count">143</span><span class="JV_count">14</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Stock-keeping <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Web page management <span class="CV_count">33</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Material and production control <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Accounting / auditing <span class="CV_count">27</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Competitor monitoring <span class="CV_count">2</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Development work <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Organisational development <span class="CV_count">45</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Providing training for salespeople <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_two five">Quality control <span class="CV_count">4</span><span class="JV_count">12</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Risk management <span class="CV_count">14</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Financial reporting <span class="CV_count">13</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Business development <span class="CV_count">16</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Insurance services <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Event marketing <span class="CV_count">75</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Facilities management <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Selling experience (telemarketing) <span class="CV_count">20</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Auditing <span class="CV_count">4</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Hotel management <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Advertising services <span class="CV_count">22</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Daily record keeping <span class="CV_count">7</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Maintenance planning (buildings) <span class="CV_count">8</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">External accounting <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Portfolio management <span class="CV_count">9</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Leadership development <span class="CV_count">30</span><span class="JV_count">5</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Payments <span class="CV_count">15</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Delivery monitoring <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Quality assurance <span class="CV_count">6</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Public relations <span class="CV_count">89</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Renovation planning (building management) <span class="CV_count">4</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Monthly reports <span class="CV_count">12</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Planning <span class="CV_count">12</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Conflict solving (human resources management) <span class="CV_count">32</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Quality (responsibility for) <span class="CV_count">20</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Operations management <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Staff responsibility <span class="CV_count">32</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy use guidance <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Manufacturing and processing of textiles, clothes, footwear, leather <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Inspection <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Social services <span class="CV_count">3</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Liasion duties <span class="CV_count">9</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Contact person services <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Social services and care <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Mathematics and statistics <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Data analysis <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Personal services <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Travel agency management <span class="CV_count">16</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Catering management <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Accommodation agency <span class="CV_count">7</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Supervising <span class="CV_count">17</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Training <span class="CV_count">35</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Business travel sales <span class="CV_count">18</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Restaurant inspection <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Tourism and conference services <span class="CV_count">38</span><span class="JV_count">7</span></div></div></div>
+<div class="level"><div class="level JV_one one">Humanities <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Ethics <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Media and communication science <span class="CV_count">12</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Translations <span class="CV_count">96</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Agriculture, forestry and fishery <span class="CV_count">4</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Equipment technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Agriculture <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Fodder manufacturing industry <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Preventive animal health <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Electrical engineering </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Methods engineering <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Telecommunications <span class="CV_count">15</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process technology (engineering) <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Servicing (electronics) <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Performance and security testing <span class="CV_count">1</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Process control <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level JV_one ">Transport services </div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Passenger transport <span class="CV_count">11</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Driving <span class="CV_count">53</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level JV_one one">Veterinary <span class="CV_count">1</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Animal protection <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Veterinary care <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Journalism and information <span class="CV_count">9</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Archiving <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Text editing <span class="CV_count">49</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Language check <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Technical documentation <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Scheduling experience (TV) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Telephone interviewing <span class="CV_count">10</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level JV_one one">Computing <span class="CV_count">31</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Web editing <span class="CV_count">29</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Java <span class="CV_count">34</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Systems analysis <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Cascading Style Sheets (CSS) <span class="CV_count">51</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Systems administration <span class="CV_count">7</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">HTML5 <span class="CV_count">54</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">SQL <span class="CV_count">26</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Java-script <span class="CV_count">32</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Applications programming <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">System testing <span class="CV_count">5</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">MS Office <span class="CV_count">230</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Excel spreadsheet <span class="CV_count">196</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Web programming <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Microsoft Word <span class="CV_count">324</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Web design <span class="CV_count">54</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Microsoft PowerPoint <span class="CV_count">267</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">User support (software) <span class="CV_count">13</span><span class="JV_count">9</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Graphics programs <span class="CV_count">18</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Research <span class="CV_count">58</span><span class="JV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Security analysis (data security) <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Work experience abroad <span class="CV_count">10</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Microsoft Access (database administration) <span class="CV_count">43</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Test management (data systems) <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Amadeus (travel reservation system) <span class="CV_count">24</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level JV_one ">Law </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Medical law <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Commercial law <span class="CV_count">19</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Sales law <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Legal terminology <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Safety regulations <span class="CV_count">6</span><span class="JV_count">3</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Contract law <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Drafting of agreements and contracts <span class="CV_count">9</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Company ownership transfers <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Litigation <span class="CV_count">8</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Education <span class="CV_count">5</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Special teaching methods <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Clinical pathology (teaching) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Pedagogy <span class="CV_count">1</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Editorial adaptation of teaching aids <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Anatomy (teaching) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one three">Education planning <span class="CV_count">17</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Arts <span class="CV_count">5</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Graphic design <span class="CV_count">41</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one two">Editing (video production) <span class="CV_count">31</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Environmental protection <span class="CV_count">4</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Technical guidance <span class="CV_count">5</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy conservation <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Waste disposal technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Energy issues <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one one">Security services <span class="CV_count">7</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Occupational safety and health <span class="CV_count">10</span><span class="JV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Internal audit (safety regulations) <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Risk and safety analysis (work environment) <span class="CV_count">8</span><span class="JV_count">8</span></div></div></div>
+<div class="level"><div class="level JV_one one">Life sciences <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Biochemistry <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Chemical-pharmaceutical documentation <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Microbiology <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Physical sciences </div></div>
+<div class="level"><div class="level"><div class="level JV_one four">Laboratory analysis <span class="CV_count">9</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Chemical technology <span class="CV_count">2</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Analysis technology <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Automation technology <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Physics <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Immunochemical methods (biochemical/clinical analysis) <span class="JV_count">1</span></div></div></div>
+<div class="level"><div class="level JV_one ">Manufacturing and processing materials </div></div>
+<div class="level"><div class="level"><div class="level JV_one five">Packaging <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div>
+<div class="level JV_one one">Transversal skills/competences <span class="CV_count">1</span></div>
+<div class="level"><div class="level JV_one one">Social skills and competences <span class="CV_count">25</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Leading others <span class="CV_count">40</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Build relationships <span class="CV_count">11</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Motivate staff and colleages <span class="CV_count">18</span><span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Exercise responsibility <span class="CV_count">6</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support colleagues <span class="CV_count">6</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Working with others <span class="CV_count">49</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Work as part of a team <span class="CV_count">55</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Collaborate on tasks <span class="CV_count">8</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Negotiate <span class="CV_count">13</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Propose options <span class="CV_count">3</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Language and communication <span class="CV_count">18</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Verbal communication <span class="CV_count">6</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Spoken interaction <span class="CV_count">6</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Negotiating <span class="CV_count">23</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Spoken production <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Presentation techniques <span class="CV_count">21</span><span class="JV_count">3</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one ">Language </div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Mother tongue </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Mother tongue English <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Mother tongue French <span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Mother tongue Dutch <span class="CV_count">9</span><span class="JV_count">14</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Foreign language <span class="CV_count">15</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Foreign language German <span class="CV_count">7</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Foreign language Spanish <span class="CV_count">4</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_three five">Foreign language Dutch <span class="CV_count">6</span><span class="JV_count">22</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_five five">Foreign language English <span class="CV_count">12</span><span class="JV_count">47</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Foreign language English Writing <span class="JV_count">1</span></div></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_four five">Foreign language French <span class="CV_count">12</span><span class="JV_count">35</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Application of knowledge <span class="CV_count">2</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Numeracy and mathematics <span class="CV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Use mathematical tools and equipment </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use measuring equipment <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Process mathematical information for work <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Interpret data <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Gather data <span class="CV_count">2</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Information and communications <span class="CV_count">29</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Interact electronically </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Communicate on-line <span class="CV_count">3</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Create electronic content <span class="CV_count">4</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Edit electronic content <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Manage software <span class="CV_count">2</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use office software <span class="CV_count">26</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Manage electronic information </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Use spreadsheets <span class="CV_count">1</span><span class="JV_count">3</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Health, safety and the working environment <span class="CV_count">10</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Implement organisational policies <span class="CV_count">4</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Monitor policy implementation <span class="CV_count">1</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support company plan <span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Support company mission <span class="CV_count">1</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Thinking skills and competences <span class="CV_count">28</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Planning own work <span class="CV_count">4</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Follow plan <span class="CV_count">7</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Monitor progress <span class="CV_count">3</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Critical thinking <span class="CV_count">18</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one ">Explore issues </div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Make judgements <span class="CV_count">5</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Examine evidence <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Check facts <span class="CV_count">11</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Creative and entrepreneurial thinking <span class="CV_count">61</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Generate new ideas <span class="CV_count">68</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Experiment <span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Problem-solving <span class="CV_count">79</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Take action to solve the problem <span class="CV_count">47</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Evaluate success <span class="CV_count">3</span><span class="JV_count">2</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Coordinate actions <span class="CV_count">9</span><span class="JV_count">11</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Implement strategy <span class="CV_count">16</span><span class="JV_count">18</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Multi task <span class="CV_count">16</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_two five">Troubleshoot <span class="CV_count">5</span><span class="JV_count">11</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Plan for action <span class="CV_count">1</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Prioritise actions <span class="CV_count">4</span><span class="JV_count">5</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Set goals <span class="CV_count">2</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Devise strategy <span class="CV_count">11</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level JV_one one">Attitudes and values at work <span class="CV_count">6</span></div></div>
+<div class="level"><div class="level"><div class="level JV_one ">Attitudes </div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Demonstrate commitment <span class="CV_count">9</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Work independently <span class="CV_count">23</span><span class="JV_count">4</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one three">Persist <span class="CV_count">14</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Attend to detail <span class="CV_count">39</span><span class="JV_count">7</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Attend to quality <span class="CV_count">10</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Meet commitments <span class="CV_count">11</span><span class="JV_count">6</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Handle challenges <span class="CV_count">9</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Manage frustration <span class="CV_count">6</span><span class="JV_count">1</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one five">Cope with pressure <span class="CV_count">22</span><span class="JV_count">8</span></div></div></div></div></div>
+<div class="level"><div class="level"><div class="level JV_one one">Values <span class="CV_count">1</span></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level JV_one one">Show respect <span class="CV_count">5</span></div></div></div></div>
+<div class="level"><div class="level"><div class="level"><div class="level"><div class="level JV_one four">Show consideration <span class="CV_count">25</span><span class="JV_count">2</span></div></div></div></div></div>
+
+</div>
+
+
+<footer>
+	<div class="linkedin_logo">
+    </div>
+    <div class="vdab_logo">
+    </div>
+    <div class="eures_logo">
+    </div>
+</footer>  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> 
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script> 
+
+</body>
+</html>

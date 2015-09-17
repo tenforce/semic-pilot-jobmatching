@@ -1,0 +1,22 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.w3.org/2004/02/skos/core#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" > 
+  <rdf:Description rdf:about="http://demo.com/job/1">
+    <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/116340"/>
+    <rdfs:label xml:lang="en">Looza_factory_employee</rdfs:label>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://demo.com/cv/999">
+    <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/227738"/>
+    <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/228309"/>
+    <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/229728"/>
+    <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/229029"/>
+    <rdfs:label>Tom Brody</rdfs:label>
+  </rdf:Description>
+
+    <rdf:Description rdf:about="http://demo.com/cv/998">
+        <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/229728"/>
+        <j.0:related rdf:resource="http://ec.europa.eu/esco/Concept/229029"/>
+        <rdfs:label>Agis</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
